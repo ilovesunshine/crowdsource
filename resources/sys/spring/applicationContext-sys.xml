@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+       	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+       default-autowire="byName" >
+
+    <!--payAuditService-start-->
+    <bean name="payAuditService" class="com.csi.jf.pay.sys.service.impl.PayAuditServiceImpl" autowire="byName"/>
+    <!--payAuditService-end-->
+    <!--msgWarnService-start-->
+    <bean name="msgWarnService" class="com.csi.jf.pay.sys.service.impl.MsgWarnServiceImpl" autowire="byName"/>
+    <!--msgWarnService-end-->
+    <!--notificationsService-start-->
+    <bean name="notificationsService" class="com.csi.jf.pay.sys.service.impl.NotificationsServiceImpl" autowire="byName"/>
+    <!--notificationsService-end-->
+    <!--openFrozenAccountService-start-->
+    <bean name="openFrozenAccountService" class="com.csi.jf.pay.sys.service.impl.OpenFrozenAccountServiceImpl" autowire="byName" />
+    <!--openFrozenAccountService-end-->
+    <bean name="payOfflineOrderAdminService" class="com.csi.jf.pay.sys.service.impl.PayOfflineOrderAdminServiceImpl" autowire="byName" />
+    <!--payBaseFeeRateLogService-start-->
+    <bean name="payBaseFeeRateLogService" class="com.csi.jf.pay.sys.service.impl.PayBaseFeeRateLogServiceImpl" autowire="byName"/>
+    <!--payBaseFeeRateLogService-end-->
+    <!--paySysMonitorService-start-->
+    <bean name="paySysMonitorService" class="com.csi.jf.pay.sys.service.impl.PaySysMonitorServiceImpl" autowire="byName"/>
+    <!--paySysMonitorService-end-->
+    <!--paySysMonitorSubService-start-->
+    <bean name="paySysMonitorSubService" class="com.csi.jf.pay.sys.service.impl.PaySysMonitorSubServiceImpl" autowire="byName"/>
+    <!--paySysMonitorSubService-end-->
+    <!--transferService-start-->
+    <bean name="transferService" class="com.csi.jf.pay.sys.service.impl.TransferServiceImpl" autowire="byName"/>
+    <!--transferService-end-->
+</beans>

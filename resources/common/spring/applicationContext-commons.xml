@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+       	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+       	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+       default-autowire="byName" >
+       
+    <!--accountManageService-start-->
+    <bean name="accountManageService" class="com.csi.jf.pay.common.service.impl.AccountManageServiceImpl" autowire="byName"/>
+    <!--accountManageService-end-->   
+    <!--accountService-start-->
+    <bean name="accountService" class="com.csi.jf.pay.common.service.impl.AccountServiceImpl" autowire="byName"/>
+    <!--accountService-end--> 
+    <!--payConfigService-end-->
+    <bean name="commonService" class="com.csi.jf.pay.common.service.impl.CommonServiceImpl" autowire="byName" />
+	<!--apiService-end -->  
+    <!--bankService-start-->
+    <bean name="bankService" class="com.csi.jf.pay.common.service.impl.BankServiceImpl" autowire="byName"/>
+    <!--bankService-end-->  
+    <!--billBuilderService-start-->
+	<bean autowire="byName" class="com.csi.jf.pay.common.service.impl.BillBuilderServiceImpl" name="billBuilderService"/>
+	<!--billBuilderService-end-->
+    <!--jfPayBillEntService-start-->
+	<bean autowire="byName" class="com.csi.jf.pay.common.service.impl.BillEntServiceImpl" name="billEntService"/>
+	<!--jfPayBillEntService-end-->
+	<!--jfPayBillPerService-start-->
+	<bean autowire="byName" class="com.csi.jf.pay.common.service.impl.BillPerServiceImpl" name="billPerService"/>
+	<!--jfPayBillPerService-end-->
+    <!--eBCNotificationsService-start-->
+    <bean name="eBCNotificationsService" class="com.csi.jf.pay.common.service.impl.EBCNotificationsServiceImpl" autowire="byName"/>
+    <!--eBCNotificationsService-end-->
+    <!--feeService-start-->
+    <bean name="feeService" class="com.csi.jf.pay.common.service.impl.FeeServiceImpl" autowire="byName"/>
+    <!--feeService-end-->
+    <!--jfOrdersService-start-->
+    <bean name="jfOrdersService" class="com.csi.jf.pay.common.service.impl.JFOrdersServiceImpl" autowire="byName"/>
+    <!--jfOrdersService-end-->
+    <!--jfTransactionService-start-->
+    <bean name="jfTransactionService" class="com.csi.jf.pay.common.service.impl.JFTransactionServiceImpl" autowire="byName"/>
+    <!--jfTransactionService-end-->
+    <!--checkAccountService-start-->
+    <bean name="checkAccountService" class="com.csi.jf.pay.common.service.impl.CheckAccountServiceImpl" autowire="byName"/>
+    <!--checkAccountService-end-->
+    <!--payAccountService-start-->
+    <bean name="payAccountService" class="com.csi.jf.pay.common.service.impl.PayAccountServiceImpl" autowire="byName"/>
+    <!--payAccountService-end-->
+    <!--payAdminsService-start-->
+    <bean name="payAdminsService" class="com.csi.jf.pay.common.service.impl.PayAdminsServiceImpl" autowire="byName"/>
+    <!--payAdminsService-end-->
+    <!--payBaseFeeRateService-start-->
+    <bean name="payBaseFeeRateService" class="com.csi.jf.pay.common.service.impl.PayBaseFeeRateServiceImpl" autowire="byName"/>
+    <!--payBaseFeeRateService-end-->
+    <!--payConfigService-start-->
+    <bean name="payConfigService" class="com.csi.jf.pay.common.service.impl.PayConfigServiceImpl" autowire="byName"/>
+	<!--apiService-start -->
+	<!--paypassSecurityService-start-->
+    <bean name="paypassSecurityService" class="com.csi.jf.pay.common.service.impl.PaypassSecurityServiceImpl" autowire="byName"/>
+    <!--paypassSecurityService-end-->
+	<bean name="paySdk" class="com.csi.jf.pay.common.service.impl.BjyytPaySdkImpl" autowire="byName" />
+	<!--bean name="paySdk" class="com.csi.jf.pay.common.service.impl.MockPaySdkImpl" autowire="byName" /--> 
+	<!--apiService-end -->
+    <!--rechargeService-start-->
+    <bean name="rechargeService" class="com.csi.jf.pay.common.service.impl.RechargeServiceImpl" autowire="byName"/>
+    <!--rechargeService-end-->   
+    <!--transactionOpenAccountService-start-->
+    <bean name="transactionOpenAccountService" class="com.csi.jf.pay.common.service.impl.TransactionOpenAccountServiceImpl" autowire="byName"/>
+    <!--transactionOpenAccountService-end-->
+    <!--transactionEditAccountService-start-->
+    <bean name="transactionEditAccountService" class="com.csi.jf.pay.common.service.impl.TransactionEditAccountServiceImpl" autowire="byName"/>
+    <!--transactionEditAccountService-end-->
+    <!--transactionService-start-->
+    <bean name="transactionService" class="com.csi.jf.pay.common.service.impl.TransactionServiceImpl" autowire="byName"/>
+    <!--transactionService-end-->
+    <!--transferAccountService-start-->
+    <bean name="transferAccountService" class="com.csi.jf.pay.common.service.impl.TransferAccountServiceImpl" autowire="byName"/>
+    <!--transferAccountService-end-->
+    <!--withdrawService-start-->
+    <bean name="withdrawService" class="com.csi.jf.pay.common.service.impl.WithdrawServiceImpl" autowire="byName"/>
+    <!--withdrawService-end-->
+       
+</beans>
