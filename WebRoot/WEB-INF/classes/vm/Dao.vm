@@ -1,0 +1,7 @@
+package ${pkg};
+
+import com.csi.jf.pay.common.dao.IDAO;
+
+public interface I$!{modelName}DAO extends IDAO{
+	//TODO customized methods
+}

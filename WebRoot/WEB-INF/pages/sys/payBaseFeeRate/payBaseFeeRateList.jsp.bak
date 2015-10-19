@@ -1,0 +1,137 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/pages/inc/taglibs.jsp" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>基础费率管理</title>
+<%@ include file="/pages/inc/header_sys.jsp" %>
+</head>
+<body>
+<%@ include file="/pages/inc/common.jsp" %>
+<div class="pay_cont_sys">
+<%@ include file="/pages/inc/menu_sys.jsp" %>
+<div class="container-fluid">
+	<div class="barTitle"> 
+			<span>基础费率管理</span>
+	</div>
+	<!--  
+	<form id="payBaseFeeRateForm"  class="bizform">
+		<div class="row"> 
+			<div class="querycell">
+				<button id="query_button" class="button" type="button" onclick="query();">查询</button>
+            </div>
+		</div>
+	</form>
+    <div class="ui-table ui-margin">
+    	<div class="nav">
+    		<button id="deleteBtn" class="button" type="button" onclick="batchDelete();">删除</button>
+    	</div>
+	    <table id="payBaseFeeRateTable"></table>
+		<div id="payBaseFeeRatePager"></div>
+	</div>
+	-->
+	<div class="ui-table ui-margin">
+    	<div class="nav">
+        	<button id="addBtn" class="button" type="button" onclick="add();"><fmt:message key='button.add'/></button>
+        	<button id="editBtn" class="button" type="button" onclick="edit();"><fmt:message key='button.edit'/></button>
+		   <button id="viewBtn" class="button" type="button" onclick="view();"><fmt:message key='button.view'/></button>
+	    </div>
+	    <table id="payBaseFeeRateTable"></table>
+		<div id="payBaseFeeRatePager"></div>
+	</div>
+</div>
+</div>
+<div id="errorDialog"></div>
+<%@ include file="/pages/inc/footer.jsp" %>
+<script type="text/javascript">
+	
+	var payBaseFeeRateGrid;
+    $(function(){
+    	payBaseFeeRateGrid = new biz.grid({
+    		id : "#payBaseFeeRateTable",
+    		url : "payBaseFeeRate/listPayBaseFeeRate",
+			rowNum : 15,
+			width:"auto",
+			multiselect:true,
+    		pager : "#payBaseFeeRatePager",
+    		prmNames : {page:"pageNo",rows:"pageSize",sort:"orderFields",order:"order"},
+    		sortname : "",
+    		sortorder : "",
+    		colModel : [
+    			{name : "baseFeeRateId", hidden:true,key:true}, 
+				{name : "feeType",label:"费率类型",align:"center",
+					formatter: function(value, options, row){
+						if(value == '0'){
+							return "个人";
+						}else if(value == '1'){
+							return "企业";
+						}else{
+							return "";
+						}
+					}
+				},
+				{name : "feeRate",label:"费率",align:"right"},
+				{name : "feeStatus",label:"状态 ",align:"center",
+					formatter: function(value, options, row){
+						if(value == '0'){
+							return "生效";
+						}else if(value == '1'){
+							return "失效";
+						}else{
+							return "";
+						}
+					}
+				},
+				{name : "createTime",label:"创建时间",align:"center"},
+				{name : "updateTime",label:"修改时间",align:"center"}
+    		],
+    		serializeGridData:function(postData){//添加查询条件值
+				var obj = biz.utils.serializeObject("#payBaseFeeRateForm");//示例中心搜索"biz.utils方法详解"查看方法说明
+    			$.extend(true,obj,postData);//合并查询条件值与grid的默认传递参数
+    			return obj;
+    		}
+    	});
+    })
+    
+	function query(){
+		payBaseFeeRateGrid.setGridParam({"page":"1"});
+		payBaseFeeRateGrid.trigger('reloadGrid');
+	}
+
+	function batchDelete(rowid){
+		var rowid = payBaseFeeRateGrid.getGridParam('selarrrow');
+		if(rowid == null || rowid.length == 0){
+			showInfo("<fmt:message key='grid.delete.chooseColAlert'/>",3000);
+			return ;
+		}
+		new biz.alert({type:"confirm",message:I18N.msg_del_confirm,
+			title:I18N.promp,callback:function(result){
+	    		if (!result) {
+	    			return;
+	    		}
+	    		var ids="";
+	    		for(var i=0; i < rowid.length;i++){
+	    			var id = payBaseFeeRateGrid.getCell(rowid[i],"baseFeeRateId");
+	    			if(i>0){
+	    				ids +=',';
+	    			}
+	    			ids += id;
+	    		}
+	    		var dataUrl = "payBaseFeeRate/delete/" + ids;
+				$.ajax({
+					url: dataUrl,
+					cache:false,
+					success: function(data, textStatus, jqXHR){
+						query();
+						showInfo("<fmt:message key='delete.success'/>",3000);
+					},
+					error:biz.utils.loadError
+				});
+			}
+		});
+	}
+
+
+</script>
+</body>
+</html>

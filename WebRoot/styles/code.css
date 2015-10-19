@@ -1,0 +1,1215 @@
+@charset "utf-8";
+/* CSS Document */
+html{background-color: #ffffff;}
+.code-depot,.current-depot,.code-record,.current-record,.code-info,.current-info,.code-up,.current-up,.code-file,.current-file,.code-impower,.current-impower,.code-protectedbranch,.current-protectedbranch,.file-pic,.document-pic,.file-copy,.icon-edit,.icon-delete,.icon-label,.icon-set{
+	background:url(../images/code-ui-icon.png) no-repeat;}
+.code-con{
+	width:1180px;
+	min-height:500px;
+	margin:0px auto;
+	margin-top:5px;}
+.code-hr{
+	border:1px dotted #eae9e9;
+	margin: 10px;
+}
+
+.code-stat-hr{
+	border:1px dotted #eae9e9;
+	margin-bottom: 10px;
+    margin-right: 27px;
+    margin-top: 10px;
+}
+
+.bordercon{
+	border-bottom:1px solid #eae9e9;
+	line-height:30px;
+	height:30px;
+	padding-top: 15px;
+	color:#838383;
+	margin: 20px;}
+.tab-bar{
+	width:450px;
+	height:30px;
+	font-size:14px;
+	padding-left: 10px;}
+.tab-bar li{
+	float:left;
+	padding:0px 20px;}
+.tab-bar li.tab-current,.tab-bar li:hover{
+	border-top:2px solid #1acb9c;
+	background:#ffffff url(../images/code-ui-icon01.png) no-repeat center top;
+	cursor:pointer;
+	border-right: 1px solid #eae9e9;
+	border-left: 1px solid #eae9e9;
+	font-weight:bold;}
+.ripos{
+	width:300px;
+	text-align:right;}
+.ripos b{ padding:0px 10px;}
+.item {
+    display: inline-block;
+    margin: 0px 8px 0px 0px;
+    vertical-align: middle;}
+.ui-icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    font-size: 0px;
+    overflow: hidden;}
+.ui-icon {
+    margin-right: 7px;
+    vertical-align: -3px;
+	width:16px;
+	height:16px;}
+.icon-label {
+    background-position:0px 0px;}
+.icon-set{
+	background-position:0px -24px;}
+.cutitem{
+	color:#FFF;
+	padding:0px 20px;
+	background:#1abc9c;
+	margin:0px;}
+.note-con{
+	margin:15px 20px;
+	height:120px;
+	height:auto!important;
+	min-height:120px;
+	background:#fffcf1;
+	border:1px solid #ffe79e;}
+.note-con h3{
+	display:block;
+	font-size:14px;
+	font-weight:bold;
+	padding:15px;}
+.note-con p{
+	color:#5e5e5e;
+	display:inline-block;
+	vertical-align:top;
+	padding:0px 20px 0px 15px;
+	line-height:24px;}
+.note-con p b{
+	font-size:14px;
+	color:#fe6600;}
+.note-con p i{
+	padding-left:40px;
+	font-style:normal;
+	color:#F00;}
+.note-line {
+	font-size: 0px;
+	width: 1px;
+	height: 56px;
+	margin-right: 9px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	overflow: hidden;
+	display: inline-block;
+	line-height: 0;
+	vertical-align: -3px;
+	border-color:#efead9;}
+.code-search{
+	margin-left:14px;
+	margin-bottom:10px;}
+.code-search input{
+	line-height:24px;
+	border:1px solid #dddddd;
+	margin-right:8px;
+	padding:0px 4px;
+	color:#595959;}
+.codebtn{
+	width:40px;
+	border-radius:2px;
+	color:#525252;
+	filter:alpha(opacity=60 finishopacity=100 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#fdfdfd,endcolorstr=#f0f0f0,gradientType=0);      
+	-ms-filter:alpha(opacity=60 finishopacity=100 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#006699,endcolorstr=#f0f0f0,gradientType=0);/*IE8*/      
+	background:#f0f0f0; /* 一些不支持背景渐变的浏览器 */      background:-moz-linear-gradient(top,rgba(254,254,254, 0.6),rgba240, 240, 240, 1));/*Firefox*/      
+	background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(254,254,254, 0.6)), to(rgba(240, 240, 240, 1)));/*chrome Safari*/      
+	background:-o-linear-gradient(top, rgba(254,254,254, 0.6),rgba(240, 240, 240, 1));/*Opera11*/}
+.codebtn-date{	
+	width:100px;
+}
+.codebtn-submit,.codebtn-save,.codebtn-cancel{
+	width: 60px;
+	height: 30px;
+	color: #ffffff;
+}
+.codebtn-submit{	
+	background: #00D099;
+	border: 1px solid #00D099;
+}
+.codebtn-save{	
+	background: #FF9800;
+	border: 1px solid #FF9800;
+}
+.codebtn-cancel{	
+	color:#525252;
+	background: #f0f0f0;
+	border: 1px solid #f0f0f0;
+}
+.codebtn-back{
+	width: 100px;
+	height: 25px;
+	color: #525252;
+	background: #f0f0f0;
+	border: 1px solid #f0f0f0;
+}
+.codebtn-green{
+	width: auto;
+	height: 25px;
+	color: #ffffff;
+	background: #00CC99;
+	border: 1px solid #00CC99;
+	padding: 2px 8px;
+}
+.codebtn-orange{
+	width: auto;
+	height: 25px;
+	color: #ffffff;
+	background: #FF6633;
+	border: 1px solid #FF6633;
+	padding: 2px 8px;
+}
+.code-table{
+	width:96%;
+	margin-left:20px;
+	margin-bottom:10px;}
+.code-table thead{
+	border:1px solid #d8d8d8;
+	text-align:left;
+	text-indent:20px;}
+.code-table tfoot{
+	background:#f4f4f4;
+	height:38px;
+	line-height:38px;
+	border-bottom:1px solid #e2e2e2;
+	font-weight:bold;}
+.code-table tfoot td{
+	text-indent:20px;}
+.code-table tfoot td .spanleft{
+	padding-left:260px;}
+.code-table tbody{
+	border:0px;}
+.code-table thead th{
+	height:40px;
+	line-height:40px;
+	text-indent:20px;}
+.code-table tbody td{
+	height:50px;
+	line-height:50px;
+	text-indent:20px;
+	border-bottom:1px solid #e2e2e2;}
+.align-right{text-align: right;padding-right:50px;}
+.tableonecol{
+	width:450px;}
+.tabletwocol{
+	width:300px;}
+.paleft260px{
+	padding-left:260px;}
+/***/
+.upcode,.uptime,.pmore{
+	margin:0px 20px;}
+.upcode{
+	border-bottom:1px dashed #cccccc;
+	padding:10px 0px 2px 2px ;
+	line-height:44px;
+	font-size:18px;}
+.uptime{
+	line-height:30px;
+	padding:0px 2px ;}
+.seeul{
+	width:290px;
+	display:block;
+	line-height:24px;
+	height:24px;}
+.seeul li{
+	padding:0px 10px;
+	float:left;
+	border:1px solid #e4e4e4;
+	margin:0px 5px;}
+.people-con{
+	width:96%;
+	/* height:auto!important;
+	height:885px; */
+	min-height:885px;
+	margin:5px auto;
+	}
+.graph-con{
+	overflow:auto;
+	overflow-y:hidden;
+}
+.people-box{
+	width:310px;
+	height:200px;
+	border:1px solid #dedede;
+	margin-top:10px;
+	}
+.people-space{
+	width:12px;
+	height:140px;
+	display:block;}
+.people-space38{
+	width:38px;
+	height:140px;
+	display:block;
+	}
+.space38{margin-left:38px;}
+.imghead{
+	float:left;
+	display:block;
+	width:40px;
+	height:40px;
+	margin-right:10px;}
+.imghead img{
+	width:40px;
+	height:40px;
+	border-radius:4px;
+	}
+.ulbox{
+	width:310px;
+	line-height:20px;
+	color:#838383;
+	padding:10px;}
+.pic-graph{
+	border-top:1px solid #dedede;
+	background:#f7f7f7;}
+.pmore{ 
+	background:#f7f7f7; border:1px solid #dedede; 
+	line-height:28px;height:28px;
+	text-align:center;
+	margin-top:5px;
+	margin-bottom:20px;}
+	
+.pmore a{color:#6f6f6f;}
+/***/
+.peo-art,.subnav,.sub-bigpic{
+	width:96%;
+	margin:0px auto;}
+.peo-art{
+	height:90px;
+	display:block;
+	margin:20px auto;}
+.art-imghead{
+	float:left;
+	width:96px;
+	height:96px;}
+.art-imghead img{
+	border-radius:4px;}
+.peo-art p{
+	line-height:20px;
+	margin-top:5px;
+	width:350px;
+	float:left;
+	height:70px;}
+.subnav{
+	background:#f7f7f7;
+	border:1px solid #e6e6e6;
+	height:28px;
+	line-height:28px;
+	text-indent:1em;}
+.sub-bigpic{
+	border:1px solid #e6e6e6;
+	margin-top:10px;}
+/***/
+.leftside{
+	width:140px;
+	height:auto!important;
+	height:200px;
+	min-height:200px;
+	padding:20px;
+	border:1px solid #ededed;
+	margin:8px;
+	font-size:14px;}
+.leftside a{
+	display:block;
+/* 	width:180px; */
+	width:130px;
+	height:50px;
+	line-height:50px;
+	cursor:pointer;}
+
+.leftside a:hover{
+	color:#06bb98; }
+
+.leftside a i{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	vertical-align:middle;
+	margin-right:10px;}
+.link-back{
+	background:url(../images/back.png) left center no-repeat;
+	padding-left:26px;
+	height:25px !important;
+	line-height:25px !important;
+}
+.current{
+	color:#06bb98;
+	font-weight:bold;}
+.code-depot{
+	background-position:-24px 0px;}
+.current-depot{
+	background-position:-24px -24px;}
+.code-record{
+	background-position:-52px 0px;}
+.current-record{
+	background-position:-52px -24px;}
+.code-info{
+	background-position:-80px 0px;}
+.current-info{
+	background-position:-80px -24px;}
+.code-up{
+	background-position:-108px 0px;}
+.current-up{
+	background-position:-108px -24px;}
+.code-file{
+	background-position:-52px -52px;}
+.current-file{
+	background-position:-52px -80px;}
+.code-impower{
+	background-position:-24px -52px;}
+.current-impower{
+	background-position:-24px -80px;}
+.code-protectedbranch{
+	background-position:-80px -52px;}
+.current-protectedbranch{
+	background-position:-80px -80px;}
+.rightside{
+	width:950px;
+	float:right;
+	margin:8px 15px 15px 0px;}
+
+.pm-rightside{
+	width:960px;
+	/* height: 400px; */
+	/* zoom:5em; */
+	float:right;
+	/* overflow-y:auto; */
+	margin:8px 15px 15px 0px;
+	
+	}
+
+/* 这样设置滚动条样式 火狐不识别 */
+.scroll-type{
+	scrollbar-arrow-color: #f4ae21; /*三角箭头的颜色*/
+	scrollbar-face-color: white; /*立体滚动条的颜色*/
+	scrollbar-3dlight-color: #e7e7e7; /*立体滚动条亮边的颜色*/
+	scrollbar-highlight-color: #e7e7e7; /*滚动条空白部分的颜色*/
+	scrollbar-shadow-color: #999; /*立体滚动条阴影的颜色*/
+	scrollbar-darkshadow-color: #e7e7e7; /*立体滚动条强阴影的颜色*/
+	scrollbar-track-color: #e7e7e7; /*立体滚动条背景颜色*/
+	scrollbar-base-color: #f8f8f8; /*滚动条的基本颜色*/
+	Cursor: url(mouse.cur); /*自定义个性鼠标*/
+}
+
+.select-con{
+	color:#5e5e5e;
+	line-height:20px;
+	border:1px solid #ccc;}
+.infotit{
+	padding:10px 20px;
+	line-height:20px;}
+.author{
+	/* display: inline-flex; 
+	padding-left:10px;*/
+}
+.author img{
+	width:40px;
+	height:40px;
+	border-radius:2px;
+	margin-right:10px;}
+.code-div-record{
+	min-height:400px;
+	/* overflow-y:auto; */
+	margin-right :3px;
+}
+.code-table-record{
+	width:98%;
+	 table-layout: fixed;
+	margin-left:14px;
+	margin-bottom:10px;}
+.code-table-record thead{
+	border:1px solid #d8d8d8;
+	text-align:left;
+	text-indent:20px;
+	background:#f7f7f9;}
+.code-table-record tbody{
+	border:0px;}
+.code-table-record thead th{
+	height:40px;
+	line-height:40px;
+	text-indent:20px;}
+.code-table-record tbody td{
+	height:40px;
+	line-height:40px;
+	text-indent:5px;
+	white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+	border-bottom:1px solid #e2e2e2;}
+.record-onecol{
+	width:120px;}
+.record-twocol{
+	width:360px;}
+.styled-select{
+   width:100px;
+   padding:0px;
+   border: 1px solid #dddddd;
+   height:25px;
+   display:inline;
+   color:#acacac;}
+  /***/
+.repot-box{
+	width:450px;
+	height:140px;
+	background:#f4f5f6;
+	position:relative;
+	margin-right:20px;
+	margin-bottom:15px;
+	border:2px dashed #f4f5f6;}
+.repot-box span{
+	display:block;
+	float:left;
+	width:100px;
+	height:100px;
+	background:#ccc;
+	margin:20px 10px;}
+.repor-icon{
+	width:50px;
+	height:16px;
+	position: absolute;
+	right:0;
+	top:8px;}
+.repor-icon a{padding-right:5px;}
+.repot-con{
+	margin-top:20px;
+	line-height:24px;}
+.icon-edit,.icon-delete,.file-copy,.file-pic,.document-pic{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	vertical-align:middle;}
+.icon-edit{
+	background-position: 0px -47px;}
+.icon-edit:hover{
+	cursor:pointer;
+	background: url(../images/code-ui-icon.png) no-repeat 0px -71px;}
+.icon-delete{
+	background-position: 0px -95px;}
+.icon-delete:hover{
+	cursor:pointer;
+	background: url(../images/code-ui-icon.png) no-repeat 0px -119px;}
+.repot-boxtwo{
+	border:2px dashed #d9d9d9;
+	background:#ffffff url(../images/repot-uiicon03.png) no-repeat center center;
+	text-align:center;}
+.addtit{
+	display:block;
+	position:absolute;
+	left:193px;
+	bottom:15px;
+	color:#34d8b1;
+	font-weight:bold;
+	font-size:16px;}
+.file-input{
+	width:500px;
+	height:25px;
+	border:1px solid #e1e1e1;}
+.file-copy{
+	background-position: 0px -142px;}
+.mar-space,.file-con{
+	margin:10px;}
+.file-con li{
+	line-height:28px;
+	padding:0px 10px;
+	border-bottom:1px dotted #e1e1e1;}
+.file-pic,.document-pic{
+	margin-right:10px;}
+.file-pic{
+	background-position: -24px -119px;}
+.document-pic{
+	background-position: -24px -143px;}
+.geaybg{
+	background:#f7f7f7;
+	line-height:40px;
+	height:40px;
+	padding-left:10px;}
+.lightblue{color:#24a4e0;width:10px;}
+/********面包屑导航样式*********/
+.breadcrumb>li{
+	display:inline-block}
+.breadcrumb>li+li:before{
+	padding:0 5px;color:#ccc;content:"/\00a0"}
+.breadcrumb>.active{
+	color:#777}
+.sourceCode{
+	display: block;
+	padding: 9px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+    overflow-x:scroll; 
+	border-radius: 4px;}
+.sourceCodeEmpty{
+	display: block;
+	padding: 9px;
+	margin: 0px 5px 5px 10px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border-radius: 4px;}
+.sourceCodeNumSpan{
+	display:inline-block;
+	width:30px;
+
+	}	
+
+/*=====================仓库列表页面样式===============================*/
+.sourceContents{
+	width: 60%;
+	position: relative;
+	top: -403px;
+	left: 205px;
+}
+.listShow {
+	position: relative;
+	left: 231px;
+    top: -402px;
+}
+.repoSpan{
+    display:inline-block;
+	width: 290px;
+	height: 113px;
+	border: 1px solid #C0B3B3;
+	padding: 5px 0px 0px 5px;
+	margin: 5px 20px 0px 0px;
+}
+.nameSpan{
+    width: 160px;
+    display:inline-block;
+	position: relative;
+	left: 108px;
+    top: -80px;
+}
+.typeSpan{
+	display: inline-block;
+	position: relative;
+	left: 109px;
+	top: -70px;
+	width: 160px;
+}
+.userSpan{
+	display: inline-block;
+	position: relative;
+	left: -52px;
+	top: -53px;
+	width: 120px;
+}
+.codeSpan{
+	display: inline-block;
+	position: relative;
+	left: 107px;
+	top: -37px;
+	top: -57px;
+}
+.operationSpan{
+	position: relative;
+	top: -43px;
+	left: 120px;
+}
+/*=====================仓库文件页面样式===============================*/
+.filediv{
+	width: 100%;
+	background-color: #fffff;
+	margin-bottom: 10px;
+}
+.fileCon{
+	width:735px;
+	margin:20px 0px 20px 10px;
+	display:none;
+}
+.filepath{
+	background: #f7f7f7;
+}
+.divNum{
+	height: 18px;
+	padding-right: 4px;
+}
+.spanNum{
+	display: -moz-inline-box;
+	display: inline-block;
+	width: 35px;
+	text-align: right;
+	background-color: white;
+	border-right: 1px solid #ededed;
+}
+ pre.filesourceCode {  
+	display: block;
+	padding:0px 0px 10px 0px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	background-color: #ffffff;
+    overflow-x:scroll; 
+	border-radius: 4px;
+	font-family: "Microsoft Yahei","Helvetica Neue", Helvetica, Arial,Tahoma,sans-serif;
+  } 
+  pre.filesourceCode li{
+  	list-style: initial;
+  } 
+.odd{
+	padding-left: 5px;
+	margin-left: -5px;
+}
+.even{
+	padding-left: 5px;
+	background-color: rgb(247, 247, 247);
+	margin-left: -5px;
+}
+.showClone{
+    margin-bottom: 10px;
+  }
+.line-numbers{
+	padding: 10px 0px 0px 12px;
+    text-align: right;
+    float: left;
+    background-color: #ffffff;
+    border-right:1px solid #E9E7E7;
+ }
+.personal-info{
+padding: 5px;
+border-bottom: 1px solid #cccccc;}
+.btn-right{position: relative;
+left: 217px;
+}
+.personal-msg{
+	padding:3px 0px 2px 5px;
+}
+.bum-btn-right{
+	position: relative;
+	left: 340px;
+}
+/*=====================仓库权限页面样式===============================*/
+.userSearchSpanMark{
+	padding:0px 0px 0px 5px;
+	margin: 4px 5px 2px 4px;
+    display: inline-block;
+    background-color:#48C9B0;
+    color: white;
+}
+.code-userul{
+	margin-left: 15px;
+	position: absolute;
+    top: 144px;
+	border: 1px solid rgb(202, 207, 202);
+	width: 333px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	z-index: 1;
+	background-color: white;
+	height: 150px;
+    display: none; 
+}
+/*=====================仓库引导页面样式===============================*/
+.repo-empty{
+	height:100px;
+	width:100%;
+	background:url(../images/repo-empty.gif) center no-repeat}
+.repo-empty-title{
+	height:30px;
+	line-height:30px;
+	text-align:center}
+.repo-empty-tips{
+	width:90%;
+	margin:auto;
+	padding:15px;
+	text-align:center;
+	background-color:#f6f6f6;
+	font-size: 10pt;}
+.repo-empty-text{
+	margin:10px 30px 10px 30px;}
+.guide-left{
+	float:left;
+	width:500px;
+	margin:10px 20px 10px 20px;
+	padding-left:30px}
+.guide-right{
+	width:auto;
+	margin:15px;
+	padding-top:40px}
+.guide-footer{
+	clear:both;
+	padding-left:30px}
+/*=====================新建仓库页面样式===============================*/
+.repoInfoForm{
+	width:800px;
+	margin:auto;
+	padding-top:30px;}
+.repoInfoForm p{
+	height:30px;
+	line-height:30px;
+	font-size:13pt;
+	font-weight:bold}
+.repo-form-label{
+	font-size:12pt;
+	width:150px;
+	margin-top:10px;
+	float:left}
+.repo-form-group{
+	clear:both;
+	margin-top:15px;}
+.repo-form-field{
+	font-size:12pt !important}
+.repo-form-tips{
+	font-size:10pt !important;
+	font-color:#5a5a5a;
+	font-weight:normal !important;}
+
+/*=====================tab式样式 begin===============================*/
+.tab-btn {
+    cursor: pointer;
+    float: left;
+    line-height: 33px;
+    padding: 0 7px;
+}
+
+.active-btn {
+    background: none repeat scroll 0 0 #1acc9c;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #fff;
+}
+
+.simple-btn {
+    background: none repeat scroll 0 0 #fff;
+}
+span.browse-help{
+	margin-left: 115px;
+}
+/*=====================tab式样式 end===============================*/
+
+
+/***========== 提示页样式 Start ==========***/
+
+.code-none-layout{
+	 width: 500px;
+	 margin: 50px auto;
+	 display:none;
+}
+.code-none-img{
+	height: 74px;
+    margin: 0 auto;
+    width: 74px;
+}
+.code-none {
+	font-size: 14px;
+    line-height: 1.5em;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.code-none-tips{
+ background: none repeat scroll 0 0 #f6f6f6;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.5em;
+    margin-top: 16px;
+    padding: 1em;
+    text-align: center;
+}
+.alm-body{
+	background:#ffffff;
+	overflow-x: hidden;
+}
+.alm-main-bum{
+	background: none repeat scroll 0 0 white;
+	border: 1px solid #e9e9e9;
+	margin: 15px auto;
+	padding: 10px 10px 30px;
+	width: 1000px;
+}
+/***========== 提示页样式 End==========***/
+#popup_content.confirm{
+	background: url("../styles/skin/jf_skin/extends/images/warn.png") no-repeat 28px 20px;
+}
+#popup_content.alert{
+	background-image: url("../styles/skin/jf_skin/extends/images/confirm.png");
+}
+
+.alm_text_warn {
+	color: red;
+}
+
+
+/***===============gitlab code source begin====================***/
+.diff {
+    color: #888;
+}
+
+.clearfix:before, .diff-file .diff-header:before, .clearfix:after, .diff-file .diff-header:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after, .diff-file .diff-header:after {
+    clear: both;
+}
+
+.issue-box .title .clearfix, .issue-box .title .diff-file .diff-header, .diff-file .issue-box .title .diff-header, .issue-box .context .clearfix, .issue-box .context .diff-file .diff-header, .diff-file .issue-box .context .diff-header, .issue-box .description .clearfix, .issue-box .description .diff-file .diff-header, .diff-file .issue-box .description .diff-header {
+    margin: 0;
+}
+
+.diff-file {
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+}
+.diff-file .diff-header {
+    background: none repeat scroll 0 0 #eee;
+    border-bottom: 1px solid #ccc;
+    color: #555;
+    padding: 5px 5px 5px 10px;
+}
+.diff-file .diff-header > span {
+    font-family: "Menlo","Liberation Mono","Consolas","Courier New","andale mono","lucida console",monospace;
+    line-height: 2;
+}
+.diff-file .diff-header .diff-btn-group {
+    float: right;
+}
+.diff-file .diff-header .diff-btn-group .btn {
+    background-color: #fff;
+}
+.diff-file .diff-header .commit-short-id {
+    font-family: "Menlo","Liberation Mono","Consolas","Courier New","andale mono","lucida console",monospace;
+    font-size: smaller;
+}
+.diff-file .diff-header .file-mode {
+    font-family: "Menlo","Liberation Mono","Consolas","Courier New","andale mono","lucida console",monospace;
+    margin-left: 10px;
+}
+.diff-file .diff-content {
+    background: none repeat scroll 0 0 #fff;
+    color: #333;
+    font-size: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.diff-file .diff-content .old span.idiff {
+    background-color: #faa;
+}
+.diff-file .diff-content .new span.idiff {
+    background-color: #afa;
+}
+.diff-file .diff-content .file-mode-changed {
+    color: #777;
+    padding: 10px;
+}
+.diff-file .diff-content table {
+    border: medium none;
+    font-family: "Menlo","Liberation Mono","Consolas","Courier New","andale mono","lucida console",monospace;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.diff-file .diff-content table td {
+    font-size: 12px;
+    line-height: 18px;
+}
+.diff-file .diff-content tr.line_holder.parallel .old_line, .diff-file .diff-content tr.line_holder.parallel .new_line, .diff-file .diff-content tr.line_holder.parallel .diff_line {
+    min-width: 50px;
+}
+.diff-file .diff-content tr.line_holder.parallel td.line_content.parallel {
+    width: 50%;
+}
+.diff-file .diff-content .old_line, .diff-file .diff-content .new_line, .diff-file .diff-content .diff_line {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-user-select: none;
+    background: none repeat scroll 0 0 #f5f5f5;
+    border-color: -moz-use-text-color #ccc -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-style: none solid none none;
+    border-width: medium 1px medium medium;
+    color: #666;
+    margin: 0;
+    max-width: 50px;
+    min-width: 35px;
+    padding: 0 5px;
+    text-align: right;
+    width: 35px;
+}
+.diff-file .diff-content .old_line a, .diff-file .diff-content .new_line a, .diff-file .diff-content .diff_line a {
+    color: #666;
+    float: left;
+    font-weight: normal;
+    width: 35px;
+}
+.diff-file .diff-content .old_line a:hover, .diff-file .diff-content .new_line a:hover, .diff-file .diff-content .diff_line a:hover {
+    text-decoration: underline;
+}
+.diff-file .diff-content .old_line.new, .diff-file .diff-content .new_line.new, .diff-file .diff-content .diff_line.new {
+    background: none repeat scroll 0 0 #cfd;
+}
+.diff-file .diff-content .old_line.old, .diff-file .diff-content .new_line.old, .diff-file .diff-content .diff_line.old {
+    background: none repeat scroll 0 0 #fdd;
+}
+.diff-file .diff-content .diff_line {
+    padding: 0;
+}
+.diff-file .diff-content .line_holder.old .old_line, .diff-file .diff-content .line_holder.old .new_line {
+    background: none repeat scroll 0 0 #fcc;
+    border-color: #e7baba;
+}
+.diff-file .diff-content .line_holder.new .old_line, .diff-file .diff-content .line_holder.new .new_line {
+    background: none repeat scroll 0 0 #cfc;
+    border-color: #b9ecb9;
+}
+.diff-file .diff-content .line_content {
+    border: medium none;
+    display: block;
+    height: 18px;
+    margin: 0;
+    padding: 0 0.5em;
+    white-space: pre;
+}
+.diff-file .diff-content .line_content.new {
+    background: none repeat scroll 0 0 #cfd;
+}
+.diff-file .diff-content .line_content.old {
+    background: none repeat scroll 0 0 #fdd;
+}
+.diff-file .diff-content .line_content.matched {
+    background: none repeat scroll 0 0 #fafafa;
+    color: #ccc;
+}
+.diff-file .diff-content .line_content.parallel {
+    display: table-cell;
+}
+.diff-file .image {
+    background: none repeat scroll 0 0 #ddd;
+    padding: 30px;
+    text-align: center;
+}
+.diff-file .image .wrap {
+    display: inline-block;
+}
+.diff-file .image .frame {
+    background-color: #fff;
+    display: inline-block;
+    line-height: 0;
+}
+.diff-file .image .frame img {
+    background: url("/assets/trans_bg-71b32959f48a03e75eb85f81903e1bd1.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    max-width: 100%;
+}
+.diff-file .image .frame.deleted {
+    border: 1px solid #ff7777;
+}
+.diff-file .image .frame.added {
+    border: 1px solid #63c363;
+}
+.diff-file .image .image-info {
+    color: grey;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+.diff-file .image .view.swipe {
+    position: relative;
+}
+.diff-file .image .view.swipe .swipe-frame {
+    display: block;
+    margin: auto;
+    position: relative;
+}
+.diff-file .image .view.swipe .swipe-wrap {
+    border-left: 1px solid #999;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    right: 7px;
+    top: 13px;
+}
+.diff-file .image .view.swipe .frame {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.diff-file .image .view.swipe .frame.deleted {
+    display: block;
+    margin: 0;
+    right: 7px;
+    top: 13px;
+}
+.diff-file .image .view.swipe .swipe-bar {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 15px;
+    z-index: 100;
+}
+.diff-file .image .view.swipe .swipe-bar:hover .top-handle {
+    background-position: -15px 3px;
+}
+.diff-file .image .view.swipe .swipe-bar:hover .bottom-handle {
+    background-position: -15px -11px;
+}
+.diff-file .image .view.swipe .swipe-bar .top-handle {
+    background: url("/assets/swipemode_sprites-c2201e0b316d93c3d7155a2c3979fe89.gif") no-repeat scroll 0 3px rgba(0, 0, 0, 0);
+    display: block;
+    height: 14px;
+    position: absolute;
+    top: 0;
+    width: 15px;
+}
+.diff-file .image .view.swipe .swipe-bar .bottom-handle {
+    background: url("/assets/swipemode_sprites-c2201e0b316d93c3d7155a2c3979fe89.gif") no-repeat scroll 0 -11px rgba(0, 0, 0, 0);
+    bottom: 0;
+    display: block;
+    height: 14px;
+    position: absolute;
+    width: 15px;
+}
+.diff-file .image .view.onion-skin .onion-skin-frame {
+    display: block;
+    margin: auto;
+    position: relative;
+}
+.diff-file .image .view.onion-skin .frame.added, .diff-file .image .view.onion-skin .frame.deleted {
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.diff-file .image .view.onion-skin .controls {
+    bottom: 0;
+    display: block;
+    height: 14px;
+    left: 50%;
+    margin-left: -150px;
+    position: absolute;
+    width: 300px;
+    z-index: 100;
+}
+.diff-file .image .view.onion-skin .controls .drag-track {
+    background: url("/assets/onion_skin_sprites-5e76cd26dc318146c4a876441a30b346.gif") repeat-x scroll -4px -20px rgba(0, 0, 0, 0);
+    display: block;
+    height: 10px;
+    left: 12px;
+    position: absolute;
+    width: 276px;
+}
+.diff-file .image .view.onion-skin .controls .dragger {
+    background: url("/assets/onion_skin_sprites-5e76cd26dc318146c4a876441a30b346.gif") repeat-x scroll 0 -34px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 14px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 14px;
+}
+.diff-file .image .view.onion-skin .controls .transparent {
+    background: url("/assets/onion_skin_sprites-5e76cd26dc318146c4a876441a30b346.gif") no-repeat scroll -2px 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 10px;
+}
+.diff-file .image .view.onion-skin .controls .opaque {
+    background: url("/assets/onion_skin_sprites-5e76cd26dc318146c4a876441a30b346.gif") no-repeat scroll -2px -10px rgba(0, 0, 0, 0);
+    display: block;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 10px;
+}
+.diff-file .view-modes {
+    background: none repeat scroll 0 0 #eee;
+    padding: 10px;
+    text-align: center;
+}
+.diff-file .view-modes ul, .diff-file .view-modes li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.diff-file .view-modes li {
+    border-left: 1px solid #c1c1c1;
+    color: grey;
+    cursor: pointer;
+    padding: 0 12px 0 16px;
+}
+.diff-file .view-modes li:first-child {
+    border-left: medium none;
+}
+.diff-file .view-modes li:hover {
+    text-decoration: underline;
+}
+.diff-file .view-modes li.active {
+    color: #333;
+    cursor: default;
+}
+.diff-file .view-modes li.active:hover {
+    text-decoration: none;
+}
+.diff-file .view-modes li.disabled {
+    display: none;
+}
+.file-content .diff-file {
+    border: medium none;
+    margin: 0;
+}
+
+.diff-file .notes_holder {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+.diff-file .notes_holder td {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd #ddd -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium;
+}
+.diff-file .notes_holder td.notes_line {
+    background: none repeat scroll 0 0 #eee;
+    padding: 10px 0;
+    text-align: center;
+}
+.diff-file .notes_holder td.notes_line2 {
+    border-left: 1px solid #ddd !important;
+    padding: 10px 0;
+    text-align: center;
+}
+.diff-file .notes_holder td.notes_content {
+    background-color: #fff;
+    border-width: 1px 0;
+    padding-top: 0;
+    vertical-align: top;
+}
+
+/**commit logs***************/
+.code_commit a{color:#24a4e0;cursor:pointer;}
+.code_commit a:hover{color:#06bb98;cursor:pointer;text-decoration: underline;}
+
+#repository-list{margin-top:10px}
+.repo_size{float: right;line-height: 22px;margin-right: 10px;}
+/***===============gitlab code source end====================***/
+/*------------------------------------menu.jsp样式冲突补偿----------------------------------*/
+#switchDown{margin-left: 30px !important;}
+.mobidm{margin-left: -108px !important;}

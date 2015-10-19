@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<model-mapping>
+  <class name="com.csi.jf.pay.common.model.PayConfig" table="jf_pay_config">
+    <comment>系统参数表</comment>
+    <sql id="list" type="default"><![CDATA[SELECT pkey,pvalue,memo,Create_Time,Create_Person_ID,Update_Time,Update_Person_ID FROM jf_pay_config WHERE 1=1]]></sql>
+    <id name="pkey" type="java.lang.String">
+      <column name="pkey" not-null="true" length="32">
+        <comment>参数名</comment>
+      </column>
+      <generator class="assigned"/>
+    </id>
+    <property name="pvalue" type="java.lang.String">
+      <column name="pvalue" length="64">
+        <comment>参数值</comment>
+      </column>
+    </property>
+    <property name="memo" type="java.lang.String">
+      <column name="memo" length="255">
+        <comment>备注</comment>
+      </column>
+    </property>
+    <property name="createTime" type="java.sql.Timestamp">
+      <column name="Create_Time">
+        <comment>创建时间</comment>
+      </column>
+    </property>
+    <property name="createPersonId" type="java.lang.Long">
+      <column name="Create_Person_ID">
+        <comment>创建人</comment>
+      </column>
+    </property>
+    <property name="updateTime" type="java.sql.Timestamp">
+      <column name="Update_Time">
+        <comment>更新时间</comment>
+      </column>
+    </property>
+    <property name="updatePersonId" type="java.lang.Long">
+      <column name="Update_Person_ID">
+        <comment>更新人</comment>
+      </column>
+    </property>
+  </class>
+</model-mapping>

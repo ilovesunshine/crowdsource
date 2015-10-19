@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bizframework-mvc PUBLIC "-//BizFramework/bizframework mvc DTD 4.2//EN" "http://www.chinasofti.com/bizframework-mvc.dtd">
+<bizframework-mvc>
+	<!-- ADD NEW CONTROLLER HERE -->
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.AdminController">
+		
+		<method name="showAudit" uri="/sys/audit" >
+			<result name="success">sys/audit/auditList.jsp</result>
+		</method>
+		<method name="listAudit" uri="/sys/audit/list"/>
+		<method name="showAuditDetail" uri="/sys/audit/show" >
+			<result name="success">sys/audit/auditShow.jsp</result>
+		</method>
+		
+		<method name="showConfig" uri="/sys/config">
+			<result name="success">sys/config/configList.jsp</result>
+		</method>
+		<method name="listConfig" uri="/sys/config/list"/>
+		<method name="showConfigDetail" uri="/sys/config/show" >
+			<result name="success">sys/config/configShow.jsp</result>
+		</method>
+		<method name="addConfig" uri="/sys/config/add" >
+			<result name="success">sys/config/configNew.jsp</result>
+		</method>
+		<method name="saveConfig" uri="/sys/config/save">
+			<result name="success" type="redirect">@showConfig</result>
+			<result name="failed">sys/config/configNew.jsp</result>
+		</method>
+		<method name="editConfig" uri="/sys/config/edit/{id}" >
+			<result name="success">sys/config/configEdit.jsp</result>
+		</method>
+		<method name="createBillIndex" uri="/sys/createBillIndex">
+			<result name="success">sys/bills/createBills.jsp</result>
+		</method>
+		<method name="createBill" uri="/sys/createBill">
+			<result name="success">sys/bills/createBills.jsp</result>
+		</method>
+		<method name="updateConfig" uri="/sys/config/update" >
+			<result name="success" type="redirect">@showConfig</result>
+		</method>
+		<method name="deleteConfig" uri="/sys/config/delete/{ids}" >
+			<result name="success" type="redirect">@showConfig</result>
+		</method>
+		<!-- 刷新系统参数 缓存数据  例：https://163.203.15.236:8080/jfpay/sys/config/resetdata      
+            163.203.15.236 为ip地址   8080为端口
+        -->
+        <method name="resetDict" uri="/sys/config/resetdata" />
+	</controller>
+	<!--sys-CONTROLLER-END-->
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.SysController">
+		<method name="showSysLogin" uri="/sys/login" >
+			<result name="success">sys/login.jsp</result>
+			<result name="hasLogin">sys/main.jsp</result>
+		</method>
+		<method name="login" uri="/sys/loginpost" >
+			<result name="success">sys/main.jsp</result>
+			<result name="failed">sys/login.jsp</result>
+		</method>
+		<method name="logout" uri="/sys/logout" >
+			<result name="success">sys/login.jsp</result>
+		</method>
+	</controller>
+	<!--sys-CONTROLLER-END-->
+	<!--payAdmins-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.PayAdminsController">
+		<method name="showAdmins" uri="/sys/admins" >
+			<result name="success">sys/admins/adminsList.jsp</result>
+		</method>
+		<method name="listPayAdmins" uri="/sys/admins/list"/>
+		<method name="add" uri="/sys/admins/add" >
+			<result name="success">sys/admins/adminsNew.jsp</result>
+		</method>
+		<method name="save" uri="/sys/admins/save">
+			<result name="success" type="redirect">@showAdmins</result>
+			<result name="failed">sys/admins/adminsNew.jsp</result>
+		</method>
+		<method name="edit" uri="/sys/admins/edit/{id}" >
+			<result name="success">sys/admins/adminsEdit.jsp</result>
+		</method>
+		<method name="update" uri="/sys/admins/update" >
+			<result name="success" type="redirect">@showAdmins</result>
+		</method>
+		<method name="delete" uri="/sys/admins/delete/{ids}" >
+			<result name="success" type="redirect">@showAdmins</result>
+		</method>
+	</controller>
+    <!--payAdmins-CONTROLLER-END-->
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.TransactionStatement">
+		<method name="showMsgs" uri="/sys/msgs" >
+			<result name="success">sys/msg/msgsList.jsp</result>
+		</method>
+		<method name="listMsgs" uri="/sys/msgs/list"/>
+		<method name="showMsgsDetail" uri="/sys/msgs/show" >
+			<result name="success">sys/msgs/msgsShow.jsp</result>
+		</method>
+		
+		<method name="showCardBindingTransaction" uri="/sys/transaction/cardbinding" >
+			<result name="success">sys/transaction/cardbindingList.jsp</result>
+		</method>
+		<method name="showWithdrawTransaction" uri="/sys/transaction/withdraw" >
+			<result name="success">sys/transaction/withdrawList.jsp</result>
+		</method>
+		<method name="showRechargeTransaction" uri="/sys/transaction/recharge" >
+			<result name="success">sys/transaction/rechargeList.jsp</result>
+		</method>
+		
+		<method name="showFailedTransaction" uri="/sys/transaction/failed" >
+			<result name="success">sys/transaction/refundTransactionList.jsp</result>
+		</method>
+		<method name="listTransction" uri="/sys/transaction/list"/>
+		<method name="updateJfTransFee" uri="/sys/transaction/updateJfTransFee"/>
+		<method name="initEBCTradeLogs" uri="/sys/transaction/ebclogs" >
+			<result name="success">sys/transaction/ebcTradeLogsList.jsp</result>
+		</method>
+		<method name="showEBCTradeLogs" uri="/sys/transaction/ebctradelogs" />
+		<method name="showEBCTradeLogDetail" uri="/sys/transaction/ebctradelogdetail" >
+			<result name="success">sys/transaction/ebcTradeLogDetail.jsp</result>
+		</method>
+		<method name="operator" uri="/sys/transaction/ebctradelogoperator" />
+		<method name="operateZip" uri="/sys/transaction/ebclogzip" />
+		<method name="operateExcel" uri="/sys/transaction/ebclogexcel" />
+		<method name="operateFTP" uri="/sys/transaction/ebclogdownload" >
+			<result name="success">sys/transaction/ebcTradeLogsList.jsp</result>
+		</method>
+		<!-- add by ouyw start 2015-03-20 -->
+		<method name="loseEfficacyRecharge" uri="/sys/transaction/loseEfficacy"/>
+		<method name="listRechargeTransction" uri="/sys/transaction/listRecharge"/>
+		<!-- add by ouyw end 2015-03-20 -->
+		<method name="listBindcards" uri="/sys/transaction/listBindcards"/>
+		<method name="matchingMessage" uri="/sys/transaction/matchingMessage"/>
+		<method name="updateRemitState" uri="/sys/transaction/updateRemitState"/>
+	</controller>
+	<!--sys-CONTROLLER-END-->
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.NotificationsController">
+		<method name="showNotifications" uri="/sys/notifications" >
+			<result name="success">sys/notifications/notificationsList.jsp</result>
+		</method>
+		<method name="listNotifications" uri="/sys/notifications/list"/>
+		<method name="showNotificationsDetail" uri="/sys/notifications/show" >
+			<result name="success">sys/notifications/notificationsShow.jsp</result>
+		</method>
+	</controller>
+	<!--sys-CONTROLLER-END-->
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.AccountRegisterController">
+		<method name="registerjfaccount" uri="/sys/account/registerjf">
+			<result name="success">sys/account/register-jf.jsp</result>
+		</method>
+		<method name="registerAccount" uri="/sys/account/register">
+			<result name="success">sys/account/register-jf.jsp</result>
+		</method>
+		
+		<method name="loggingIndex" uri="/sys/loggingdata/index">
+			<result name="success">sys/account/loggingData.jsp</result>
+		</method>
+		
+		<method name="loggingJfAccountInfo" uri="/sys/loggingdata/logging">
+			<result name="success">sys/account/loggingData.jsp</result>
+		</method>
+		<method name="resolveErrorAccount" uri="/sys/account/resolveerror">
+			<result name="success">sys/account/resolve-error.jsp</result>
+		</method>
+		<method name="listAccount" uri="/sys/account/resolvelistAccount" />
+		
+		<method name="resolvedAccountList" uri="/sys/account/resolved">
+			<result name="success">sys/account/resolved-account-list.jsp</result>
+		</method>
+		<method name="listResolvedAccount" uri="/sys/account/resolvedlistAccount" />
+		<method name="forwardToOpenAccount" uri="/sys/account/forwardToOpenAccount">
+			<result name="failed">sys/account/resolve-failed.jsp</result>
+			<result name="success">sys/account/resolve-account-info.jsp</result>
+		</method>
+		<method name="openAccount" uri="/sys/account/openAccount">
+			<result name="failed">sys/account/resolve-failed.jsp</result>
+			<result name="success" type="redirect" >@resolvedAccountList</result>
+		</method>
+		  <method name="resetAccount" uri="/sys/account/entperreset/{ids}">
+			<result name="success" type="redirect">@resolveErrorAccount</result>
+		</method>
+		<method name="resetAllAccount" uri="/sys/account/resetAllAccount">
+			<result name="success" type="redirect">@resolveErrorAccount</result>
+		</method>
+		<method name="resetAccountUsername" uri="/sys/account/resetusername">
+			<result name="success" type="redirect">@resolveErrorAccount</result>
+		</method>
+		<method name="queryDisplayName" uri="/sys/account/queryDisplayName" />
+		<method name="decodeAccountName" uri="/sys/account/decodeAccountName" />
+		<method name="harvestDisplayName" uri="/sys/account/harvestDisplayName" />
+	</controller>
+	<!--sys-CONTROLLER-END-->
+	<!--CheckValue-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.CheckValueController">
+		
+		<!-- 企业/个人用户验签 begin -->
+		<method name="showAccount" uri="/sys/checkvalue/entper" >
+			<result name="success">sys/checkvalue/accountList.jsp</result>
+		</method>
+		<method name="listAccount" uri="/sys/checkvalue/entperlist"/>
+		<method name="resetAllAccount" uri="/sys/account/entperresetAll">
+			<result name="success" type="redirect">@showAccount</result>
+		</method>
+		<method name="resetAccount" uri="/sys/checkvalue/entperreset/{ids}">
+			<result name="success" type="redirect">@showAccount</result>
+		</method>
+		<method name="resetAccountUsername" uri="/sys/checkvalue/resetusername">
+			<result name="success" type="redirect">@showAccount</result>
+		</method>
+		<!-- 企业/个人用户验签 end -->
+		
+		<!-- 平台账户验签 begin -->
+		<method name="showAccountJf" uri="/sys/checkvalue/jf" >
+			<result name="success">sys/checkvalue/accountJfList.jsp</result>
+		</method>
+		<method name="listAccountJf" uri="/sys/checkvalue/jflist"/>
+		<method name="resetAllAccountJf" uri="/sys/checkvalue/jfresetAll">
+			<result name="success" type="redirect">@showAccountJf</result>
+		</method>
+		<method name="resetAccountJf" uri="/sys/checkvalue/jfreset/{ids}">
+			<result name="success" type="redirect">@showAccountJf</result>
+		</method>
+		<!-- 平台账户验签 end -->
+		
+		<!-- 订单验签 begin -->
+		<method name="showOrder" uri="/sys/checkvalue/jfOrder" >
+			<result name="success">sys/checkvalue/jfOrderList.jsp</result>
+		</method>
+		<method name="listOrder" uri="/sys/checkvalue/jfOrderlist"/>
+		<method name="resetAllOrder" uri="/sys/checkvalue/jfOrderresetAll">
+			<result name="success" type="redirect">@showOrder</result>
+		</method>
+		<method name="resetOrder" uri="/sys/checkvalue/jfOrderreset/{ids}">
+			<result name="success" type="redirect">@showOrder</result>
+		</method>
+		<!-- 订单验签 end -->
+		
+		<!-- 订单支付记账流水验签 begin -->
+		<method name="showTransaction" uri="/sys/checkvalue/transaction" >
+			<result name="success">sys/checkvalue/transactionList.jsp</result>
+		</method>
+		<method name="listTransaction" uri="/sys/checkvalue/transactionlist"/>
+		<method name="resetAllTransaction" uri="/sys/checkvalue/transactionresetAll">
+			<result name="success" type="redirect">@showTransaction</result>
+		</method>
+		<method name="resetTransaction" uri="/sys/checkvalue/transactionreset/{ids}">
+			<result name="success" type="redirect">@showTransaction</result>
+		</method>
+		<!-- 订单支付记账流水验签 end -->
+		
+	</controller>
+	<!--CheckValue-CONTROLLER-END-->	
+	<!--sys-CONTROLLER-START-->
+	<controller name="com.csi.jf.pay.sys.controller.DBBackupController">
+		<method name="showBackups" uri="/sys/backup">
+			<result name="success">sys/backup/dbBackupList.jsp</result>
+		</method>
+		<method name="doBackup" uri="/sys/backup/new">
+			<result name="success" type="redirect">@showBackups</result>
+		</method>
+	</controller>
+	<!--sys-CONTROLLER-END-->
+    <!--sys-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.TransferController">
+        <method name="showTransfer" uri="/sys/transfer">
+            <result name="success">sys/transfer/transferForm.jsp</result>
+        </method>
+        <method name="confirmTransfer" uri="/sys/transfer/confirm">
+            <result name="success">sys/transfer/transferConfirm.jsp</result>
+            <result name="failed">sys/transfer/transferForm.jsp</result>
+        </method>
+        <method name="postTransfer" uri="/sys/transfer/post">
+            <result name="success">sys/transfer/transferForm.jsp</result>
+        </method>
+        <method name="showBonusTransList" uri="/sys/transfer/bonusTrans">
+            <result name="success">sys/transfer/bonusTrans.jsp</result>
+        </method>
+        <method name="findBonusTransList" uri="/sys/transfer/bonusTransList"/>
+        <method name="payBonus" uri="/sys/transfer/payBonus"/>
+    </controller>
+    <!--sys-CONTROLLER-END-->
+    <!--openFrozenAccount-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.OpenFrozenAccountController">
+        <method name="list" uri="/sys/listAccount">
+            <result name="success">sys/openFrozenAccount/openFrozenAccountList.jsp</result>
+        </method>
+        <method name="listOpenFrozenAccount" uri="/sys/listOpenFrozenAccount"/>
+        <method name="queryBalance" uri="/sys/subAccount/queryBalance" />
+        <method name="singleOpenFrozenAccount" uri="/sys/singleOpenFrozenAccount"/>
+        <method name="batchOpenFrozenAccount" uri="/sys/batchOpenFrozenAccount"/>
+    </controller>
+    
+    <!--
+    <controller name="com.csi.jf.pay.sys.controller.PayOfflineOrderAdminController">
+        <method name="execute" uri="/sys/offline/execute"/>
+        <method name="executeBonusTrans" uri="/sys/executeBonusTrans"/>
+        <method name="executeBillUpdate" uri="/sys/executeBillUpdate"/>
+        <method name="addRechargeTrans" uri="/sys/addRechargeTrans"/>
+    </controller>
+    -->
+    <!--openFrozenAccount-CONTROLLER-END-->
+	<!--payBaseFeeRate-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.PayBaseFeeRateController">
+		<method name="list" uri="/sys/payBaseFeeRate">
+			<result name="success">sys/payBaseFeeRate/payBaseFeeRateList.jsp</result>
+		</method>
+		<method name="queryPayBaseFeeRate" uri="/sys/queryPayBaseFeeRate">
+			<result name="success">sys/payBaseFeeRate/payBaseFeeRateList.jsp</result>
+		</method>
+		<method name="listPayBaseFeeRate" uri="/sys/payBaseFeeRate/listPayBaseFeeRate"/>
+		<method name="editBaseFeeRate" uri="/sys/payBaseFeeRate/edit/{id}" >
+			<result name="success">sys/payBaseFeeRate/payBaseFeeRateEdit.jsp</result>
+		</method>
+		<method name="updatePayBaseFeeRate" uri="/sys/payBaseFeeRate/update" >
+			<result name="success">sys/payBaseFeeRate/payBaseFeeRateEdit.jsp</result>
+		</method>
+	</controller>
+    <!--payBaseFeeRate-CONTROLLER-END-->
+	<!--payBaseFeeRateLog-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.PayBaseFeeRateLogController">
+		<method name="list" uri="/sys/payBaseFeeRateLog">
+			<result name="success">sys/payBaseFeeRateLog/payBaseFeeRateLogList.jsp</result>
+		</method>
+		<method name="listPayBaseFeeRateLog" uri="/sys/payBaseFeeRateLog/listPayBaseFeeRateLog"/>
+		<method name="delete" uri="/sys/payBaseFeeRateLog/delete/{ids}" />
+	</controller>
+    <!--payBaseFeeRateLog-CONTROLLER-END-->
+	<!--paySysMonitor-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.PaySysMonitorController">
+		 <!--
+		 <method name="showMonitorItem" uri="/paySysMonitor">
+			<result name="success">sys/paySysMonitor/MonitorDashBord.jsp</result>
+		 </method>
+		 -->
+		<method name="list" uri="/paySysMonitor">
+			<result name="success">sys/paySysMonitor/paySysMonitorList.jsp</result>
+		</method>
+		<method name="listPaySysMonitor" uri="/paySysMonitor/listPaySysMonitor"/>
+		<method name="delete" uri="/paySysMonitor/delete/{ids}" />
+		
+		<method name="loglist" uri="/paySysMonitorLogs">
+			<result name="success">sys/paySysMonitor/paySysMonitorLogs.jsp</result>
+		</method>
+		<method name="listPaySysMonitorLogs" uri="/paySysMonitor/listPaySysMonitorLogs"/>
+		<method name="queryItemList" uri="/sys/queryItemList">
+			<result name="success">sys/paySysMonitor/paySysMonitorList.jsp</result>
+		</method>
+	</controller>
+    <!--paySysMonitor-CONTROLLER-END-->
+	<!--paySysMonitorSub-CONTROLLER-START-->
+    <controller name="com.csi.jf.pay.sys.controller.PaySysMonitorSubController">
+		<method name="list" uri="/paySysMonitorSub">
+			<result name="success">sys/paySysMonitorSub/paySysMonitorSubList.jsp</result>
+		</method>
+		<method name="listPaySysMonitorSub" uri="/paySysMonitorSub/listPaySysMonitorSub"/>
+		<method name="showMonitorDetail" uri="/sys/monitor/show" >
+			<result name="success">sys/paySysMonitorSub/sysMonitorSubDetail.jsp</result>
+		</method>
+		<method name="delete" uri="/paySysMonitorSub/delete/{ids}" />
+	</controller>
+    <!--paySysMonitorSub-CONTROLLER-END-->
+</bizframework-mvc>

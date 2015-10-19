@@ -1,0 +1,497 @@
+@CHARSET "UTF-8";
+/* commom ***************************************/
+.fleft {
+	float:left;
+}
+.border{
+	border: 1px #000000 solid;
+}
+.formTitle {
+	font-weight: bold;
+}
+.dhide{
+	display:none;
+}
+.closeButt{
+	width:12px;
+	height:12px;
+	background-image: url("images/close.png");
+	background-repeat: no-repeat;
+	float:right;
+	cursor: pointer;
+}
+.newBtn{
+	margin:20px 250px;
+}
+.tag .newBtn{
+	margin:20px 200px;
+}
+/*
+ * 工作经验、项目经验、教育信息模块共用的样式
+ * @author   zhouxin(zhouxin006@chinasofti.com)
+ * @date  2014-02-11
+ */
+ /*新建按钮样式*/
+.resume-newBtn{
+	display:block;
+	float:right;
+	padding:10px;
+}
+/*内容样式*/
+.resume-content{
+	padding-top:10px;
+	background-color: white;
+	font-family:应用字体;
+	font-size:12px;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none;
+	color:#808080;	
+}
+/*内容边框大小*/
+.resume-borderSize{
+	max-height:250px;
+	overflow-y:auto;
+	overFlow-x:hidden; 
+}
+/*展示页面的时间距离左侧边框的距离*/
+.resume-time{
+	padding-left:20px;
+}
+/*展示页面结束日期*/
+.resume-endDate{
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+/*展示页面内容的标题的样式*/
+.resume-contentTitle{
+	font-family:"宋体";
+	font-size:14px;
+	font-weight:bold;
+	color:#808080;
+}
+/*展示页面内容框中的内容间距*/
+.resume-contentContent{
+	padding-top:10px;
+}
+/*展示页面内容框中的下划线*/
+.resume-contentUnderline{
+	border-bottom:1px #d7d7d7 dotted; 
+	padding-bottom: 10px;
+}
+/*新建页面时间框大小*/
+.box .resume-newDateValue{
+	width:32%;
+	height:20px;
+}
+/*新建页面清除按钮上面的浮动*/
+.resume-newBtnClear{
+	clear:both;
+	background-color: #FFFFFF; 
+}
+/*新建页面select框的样式*/
+.inputTd .select{
+	width:153px;
+}
+/*新建页面关闭图标样式*/
+.resume-newCloseBtn{
+	width:15px;
+	height: 15px;
+	display:block;
+	float:right;
+	padding-left:3px;
+	padding-top:3px;
+}
+
+/*工作经验，项目经验的价值标签 */
+.resume-newTagValue{
+	display: block;
+	float:left;
+	background-color: #d7d7d7;
+	width:100px;
+	height: 30px;
+	line-height: 30px;
+	text-align:center;
+	margin-right:6px;
+}
+/*新建页面的textarea的样式*/
+.resume-newDescTextArea{
+	width:87%;
+	height:60px;
+}
+/*去除新建页面的说明一行的上边框*/
+.bizform .table td{
+	border-top: 0px solid #DDDDDD;
+}
+
+/*
+ * 技能信息tab标签的共用样式
+ * @author   zhouxin(zhouxin006@chinasofti.com)
+ * @date  2014-02-11
+ */
+ /*去除表格的上边框*/
+.ui-widget-content .table td{
+	border-top: 0px solid #DDDDDD;
+}
+/*表格内字体的样式*/
+.ui-widget-content .table .resume-fontBold{
+	  font-weight:bold; 
+}
+.ui-widget-content .table .resume-fontColor{
+	  color: #808080;
+}
+/*表格的下划线*/
+.ui-widget-content .table .resume-tabTableTdUnderline,.resume-tabTableTdUpd,.resume-tabTableTdDel{	
+	border-bottom: 1px  dotted #D7D7D7;
+}
+/*表格内容的行悬浮样式*/
+.ui-widget-content .table tr:hover td{
+	background:none;
+}
+
+.ui-widget-content .table tr .resume-tabTableTdUpd a{
+	color:white;
+	float:right;
+}
+.ui-widget-content .table tr .resume-tabTableTdDel a{
+	color:white;
+}
+.ui-widget-content .table tr:hover .resume-tabTableTdUpd a{
+	color:blue;
+}
+.ui-widget-content .table tr:hover .resume-tabTableTdDel a{
+	color:red;
+}
+/*去除table下面的空隙*/
+.resume-tabTableBottom{
+	margin-bottom: 0px;
+}
+/* liuchaoqun *************************************************************************************************/
+.psInfo-mainBox {
+	padding-bottom:20px;
+	height:222px;
+}
+#psInfo-leftBox {
+	float:left;
+	width:115px;
+	margin:22px 28px 0 7px;
+}
+#psInfo-pic {
+	width:115px;
+	height:154px;
+	border:1px #c0c0c0 solid;
+}
+#psInfo-pic img {
+	width:115px;
+	height:154px;
+}
+#psInfo-editPic {
+	width:54px;
+	height:17px;
+	margin:12px auto;
+	text-align:center;
+}
+#psInfo-editPic a {
+	font-family:"宋体";
+	font-size:12px;
+	color:#11b2f5;
+	font-weight: bold;
+	text-decoration:underline;
+}
+#psInfo-rightBox {
+	float:left;
+	width:533px;
+	margin-top:20px;
+}
+#psInfo-row1 {
+	height:28px;
+	line-height:28px;
+}
+#psInfo-name {
+	font-family:"微软雅黑";
+	font-size:28px;
+	color:#444444;
+	float:left;
+}
+#psInfo-working {
+	width:39px;
+	height:19px;
+	margin:4px 20px 0 10px;
+	line-height:19px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-size:12px;
+	color:#ffffff;
+	letter-spacing:2px;
+	background-color:#11b2f5;
+	border:2px solid;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	float:left;
+}
+#psInfo-medal {
+	float:left;
+}
+#psInfo-row2 {
+	height:36px;
+	line-height:36px;
+	font-family:"宋体";
+	font-size:14px;
+	color:#1acb9c;
+	font-weight: bold;
+	text-align:left;
+	clear:both;
+}
+#psInfo-department {
+}
+#psInfo-post {
+	margin-left:20px;
+}
+#psInfo-row3 {
+	padding-bottom: 35px;
+	font-family:"宋体";
+	font-size:14px;
+	color:#777777;
+}
+#psInfo-row3 span{
+	margin-bottom:5px;
+}
+.psInfo-row3-spacing1 {
+	margin-right:12px;
+}
+.psInfo-row3-spacing2 {
+	margin-right:25px;
+}
+.psInfo-row3-spacing3 {
+	margin-right:20px;
+}
+#psInfo-row4 , #psInfo-row5 {
+	height:20px;
+	line-height:20px;
+	font-family:"宋体";
+	font-size:14px;
+	color:#777777;
+	font-weight: bold;
+}
+#psInfo-skill {
+	font-weight:normal;
+	font-size:14px;
+}
+#psInfo-row6 {
+	padding-top:18px;
+}
+.psInfo-buttTextWhite {
+	margin-left:29px;
+	font-family:"宋体";
+	font-size:12px;
+	color:#ffffff;
+}
+.psInfo-buttTextBlack {
+	margin-left:32px;
+	font-family:"宋体";
+	font-size:12px;
+	color:#777777;
+}
+.psInfo-buttEditResume {
+	display:block;
+	width:93px;
+	height:25px;
+	line-height:25px;
+	background-image: url(../resume/images/edit.png);	
+}
+.psInfo-buttEditResume:hover {
+	text-decoration:none;
+	background-image: url(../resume/images/editOver.png);	
+}
+.psInfo-buttAddFriend {
+	display:block;
+	width:93px;
+	height:25px;
+	line-height:25px;
+	background-image: url(../resume/images/addFriend.png);	
+	margin-right:8px;
+}
+.psInfo-buttAddFriend:hover {
+	text-decoration:none;
+	background-image: url(../resume/images/addFriendOver.png);	
+}
+.psInfo-buttSendMess {
+	display:block;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	background-image: url(../resume/images/sendMess.png);	
+}
+.psInfo-buttSendMess:hover {
+	text-decoration:none;
+	background-image: url(../resume/images/sendMessOver.png);	
+}
+.psInfo-editBox {
+	margin-left:-15px;
+	background-color: #ffffff;
+}
+/* ------------------tag-------------------- */
+.tag {
+	min-height:104px;
+	padding-top:15px;
+	padding-left:50px;
+	background-image: url(../resume/images/tab.png);
+	background-repeat: no-repeat;
+	background-position: -1px 10px;
+}
+.tag .table td{
+	border-top:none;
+}
+.tag-item {
+	height:30px;
+	margin-right:28px;
+	margin-bottom:10px;
+	line-height:30px;
+}
+.tag-item-left {
+	width:16px;
+	height:30px;
+	background-image: url(../resume/images/tabLeft.png);
+	background-repeat: no-repeat;
+}
+.tag-item-center {
+	height:30px;
+	background-image: url(../resume/images/tabCenter.png);
+	background-repeat:repeat-x;
+}
+.tag-item-center-code {
+	font-family:"宋体";
+	font-size:12px;
+	color:#1acb9c;
+	font-weight: bold;
+	margin-left:-7px;
+	margin-right:5px;
+}
+.tag-item-right {
+	width:17px;
+	height:30px;
+	background-image: url(../resume/images/tabRight.png);
+	background-repeat: no-repeat;
+}
+.tag-item-add {
+	width:14px;
+	height:14px;
+	cursor:pointer;
+	margin-top:8px;
+	margin-left:2px;
+	background-image: url(../resume/images/addTab.png);
+	background-repeat: no-repeat;
+}
+.resume {
+	height:107px;
+	padding:20px;
+}
+.contact-butt-addPhone{
+	width:14px;
+	height:14px;
+	margin-top:6px;
+	margin-left:8px;
+	cursor:pointer;
+	background-image: url(../resume/images/addTab.png);
+	background-repeat: no-repeat;
+}
+input.contact-butt-removePhone{
+	width:14px;
+	height:14px;
+	margin-top:6px;
+	margin-left:8px;
+	border-style:none;
+	background-color:#ffffff;
+	background-image: url(../resume/images/close.png);
+	background-repeat: no-repeat;
+}
+.contact-box-phone{
+	width:500px;
+	height:32px;
+}
+.contact-box-phone input{
+	margin-left:10px;
+}
+.contact-box-phone select{
+	width:80px;
+	margin-left:40px;
+}
+.contact-type{
+	width:100px;
+}
+/*
+ * 微简历“暂无信息”显示样式
+ * @author   chengchangchun(chengchangchun@chinasofti.com)
+ * @date  2014-02-24
+ */
+.noResumeMsg{
+ margin:20px 250px;
+ }
+ /**简历的编辑、删除链接样式**/
+.resume-editSpan{
+	display:none;
+	float:right;
+	margin-right:30px;
+    font-family: 应用字体;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+}
+  /**职业技能简历显示div**/
+.resume-skill-td{
+	border-bottom: 1px dotted #D7D7D7;
+	height: 30px;
+
+}  
+  
+/*
+ *微简历编辑头像
+ *@auther jdh  jiangdh@chinasofti.com
+ *@date 2014-02-26
+ */ 
+/*弹出框*/
+ .ui-dialog .ui-dialog-titlebar{
+ 	background-color:white;
+ 	border-bottom:1px;
+ }
+ 
+.ui-dialog .ui-dialog-titlebar-close,.ui-dialog .ui-dialog-titlebar-close.ui-state-hover{
+	background-color:#F6F6F6;
+	padding:1px;
+}
+.editPic.ui-dialog-content{
+	padding:0 25px;
+}
+/*上传头像*/
+.headshot{
+	width:240px;
+	height:240px;
+	border:2px solid rgb(231, 228, 228); 
+	text-align:center;
+}
+.headshotSave{
+	background-color:gray;
+}
+.headshot-des{
+	font-size:14px;
+}
+.headshot-validate{
+	font-size:11px;
+}
+.headshotView{
+	padding-top:60px;	
+}
+.headshot ul{
+	margin:0;
+}
+.headshot .csiui-file-input{
+	padding:0;
+	border:0;
+}
+.headshot li{
+	list-style: none outside none;
+	 padding: 5px 0;
+}
+.headshotDes{
+	margin-bottom:10px;
+}

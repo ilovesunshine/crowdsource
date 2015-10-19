@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<model-mapping>
+  <class name="com.csi.jf.pay.common.model.PayAdmins" table="jf_pay_admins">
+    <comment>jf_pay_admins</comment>
+    <sql id="list" type="default"><![CDATA[SELECT SA_ID,JFID,USER_ROLE,USER_NAME,USER_STATUS,LAST_LOGIN_TIME,CREATE_TIME,UPDATE_TIME,DELETE_FLAG FROM jf_pay_admins WHERE 1=1]]></sql>
+    <id name="saId" type="java.lang.Long">
+      <column name="SA_ID" not-null="true">
+        <comment>主键</comment>
+      </column>
+      <generator class="native"/>
+    </id>
+    <property name="jfid" type="java.lang.Long">
+      <column name="JFID">
+        <comment>用户ID</comment>
+      </column>
+    </property>
+    <property name="userRole" type="java.lang.String">
+      <column name="USER_ROLE" length="1">
+        <comment>用户角色，1-运营管理，2-系统管理</comment>
+      </column>
+    </property>
+    <property name="userName" type="java.lang.String">
+      <column name="USER_NAME" length="255">
+        <comment>用户名</comment>
+      </column>
+    </property>
+	<property name="adminPass" type="java.lang.String">
+      <column name="ADMIN_PASS" length="32">
+        <comment>管理密码</comment>
+      </column>
+    </property>
+    <property name="userStatus" type="java.lang.String">
+      <column name="USER_STATUS" length="1">
+        <comment>用户状态，0-锁定，1-正常</comment>
+      </column>
+    </property>
+    <property name="lastLoginTime" type="java.sql.Timestamp">
+      <column name="LAST_LOGIN_TIME">
+        <comment>最后登录时间</comment>
+      </column>
+    </property>
+    <property name="createTime" type="java.sql.Timestamp">
+      <column name="CREATE_TIME">
+        <comment>创建时间</comment>
+      </column>
+    </property>
+    <property name="updateTime" type="java.sql.Timestamp">
+      <column name="UPDATE_TIME">
+        <comment>更新时间</comment>
+      </column>
+    </property>
+    <property name="deleteFlag" type="java.lang.String">
+      <column name="DELETE_FLAG" length="1">
+        <comment>删除标记：0-未删除，1-已删除</comment>
+      </column>
+    </property>
+  </class>
+</model-mapping>

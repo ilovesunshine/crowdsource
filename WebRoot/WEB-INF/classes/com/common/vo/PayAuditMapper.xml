@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.common.vo.PayAudit">
+	<resultMap id="BaseResultMap" type="com.common.vo.PayAudit">
+		<id column="ACT_ID" property="actId" jdbcType="INTEGER" />
+		<result column="ACTOR" property="actor" jdbcType="VARCHAR" />
+		<result column="USERID" property="userid" jdbcType="VARCHAR" />
+		<result column="PERSONUUID" property="personuuid" jdbcType="VARCHAR" />
+		<result column="ORGNAME" property="orgname" jdbcType="VARCHAR" />
+		<result column="ORGUUID" property="orguuid" jdbcType="VARCHAR" />
+		<result column="ENROLLED_ORG" property="enrolledOrg" jdbcType="VARCHAR" />
+		<result column="ENROLLED_ORGUUID" property="enrolledOrguuid"
+			jdbcType="VARCHAR" />
+		<result column="ACCOUNTTYPE" property="accounttype" jdbcType="INTEGER" />
+		<result column="ACT_RESULT" property="actResult" jdbcType="INTEGER" />
+		<result column="ACT_ACTION" property="actAction" jdbcType="VARCHAR" />
+		<result column="ACT_CODE" property="actCode" jdbcType="VARCHAR" />
+		<result column="ACT_OBJ" property="actObj" jdbcType="VARCHAR" />
+		<result column="LOGOUT_TIME" property="logoutTime" jdbcType="DECIMAL" />
+		<result column="LOGINID" property="loginid" jdbcType="DECIMAL" />
+		<result column="LOGIN_MODE" property="loginMode" jdbcType="VARCHAR" />
+		<result column="ACT_TIME" property="actTime" jdbcType="DECIMAL" />
+		<result column="ACT_ITEM_CODE" property="actItemCode" jdbcType="VARCHAR" />
+		<result column="ACT_ITEM_NUM" property="actItemNum" jdbcType="INTEGER" />
+		<result column="ISCLOB" property="isclob" jdbcType="INTEGER" />
+		<result column="ACT_MESSAGE" property="actMessage" jdbcType="VARCHAR" />
+		<result column="ACT_IP" property="actIp" jdbcType="VARCHAR" />
+		<result column="SIGNATURE" property="signature" jdbcType="VARCHAR" />
+		<result column="EXT1" property="ext1" jdbcType="VARCHAR" />
+		<result column="EXT2" property="ext2" jdbcType="VARCHAR" />
+		<result column="EXT3" property="ext3" jdbcType="VARCHAR" />
+		<result column="EXT4" property="ext4" jdbcType="INTEGER" />
+		<result column="EXT5" property="ext5" jdbcType="INTEGER" />
+	</resultMap>
+<sql id="Base_Column_List">
+        ACT_ID,ACTOR,USERID,PERSONUUID,ORGNAME,ORGUUID,ENROLLED_ORG,
+        ENROLLED_ORGUUID,ACCOUNTTYPE,ACT_RESULT,ACT_ACTION,ACT_CODE,ACT_OBJ,
+        LOGOUT_TIME,LOGINID,LOGIN_MODE,ACT_TIME,ACT_ITEM_CODE,ACT_ITEM_NUM,
+        ISCLOB,ACT_MESSAGE,ACT_IP,SIGNATURE,EXT1,EXT2,EXT3,EXT4,EXT5
+    </sql>
+    <sql id="Base_Query_List">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM JF_PAY_AUDIT where 1=1
+            <if test="actor != null and actor!=''">
+                <bind name="actortmp" value="'%' + actor + '%'" />
+                     AND ACTOR like #{actortmp}
+            </if>
+            <if test="userid != null and userid!=''">
+                <bind name="useridtmp" value="'%' + userid + '%'" />
+                     AND USERID like #{useridtmp}
+            </if>
+            <if test="personuuid != null and personuuid!=''">
+                <bind name="personuuidtmp" value="'%' + personuuid + '%'" />
+                    AND PERSONUUID like #{personuuidtmp}
+            </if>
+            <if test="accounttype==0||(accounttype != null and accounttype!='')">
+                     AND ACCOUNTTYPE = #{accounttype}
+            </if>
+            <if test="actAction != null and actAction!=''">
+                     AND ACT_ACTION = #{actAction}
+            </if>
+            <if test="actObj != null and actObj!=''">
+                     AND ACT_OBJ = #{actObj}
+            </if>
+            <if test="actMessage != null and actMessage!=''">
+                <bind name="actMessagetmp" value="'%' + actMessage + '%'" />
+                     AND ACT_MESSAGE = like #{actMessagetmp}
+            </if>
+            <if test="actResult==0 || (actResult != null and actResult!='')">
+                     AND ACT_RESULT = #{actResult}
+            </if>
+            <if test="actId != null and actId!=''">
+                     AND ACT_ID = #{actId}
+            </if>
+    </sql>
+    <select id="selectWithModel" resultMap="BaseResultMap" parameterType="com.common.vo.PayAudit">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM JF_PAY_AUDIT where 1=1
+            <if test="actor != null and actor!=''">
+                <bind name="actortmp" value="'%' + actor + '%'" />
+                     AND ACTOR like #{actortmp}
+            </if>
+            <if test="userid != null and userid!=''">
+                <bind name="useridtmp" value="'%' + userid + '%'" />
+                     AND USERID like #{useridtmp}
+            </if>
+            <if test="personuuid != null and personuuid!=''">
+                <bind name="personuuidtmp" value="'%' + personuuid + '%'" />
+                    AND PERSONUUID like #{personuuidtmp}
+            </if>
+            <if test="accounttype==0||(accounttype != null and accounttype!='')">
+                     AND ACCOUNTTYPE = #{accounttype}
+            </if>
+            <if test="actAction != null and actAction!=''">
+                     AND ACT_ACTION = #{actAction}
+            </if>
+            <if test="actObj != null and actObj!=''">
+                     AND ACT_OBJ = #{actObj}
+            </if>
+            <if test="actMessage != null and actMessage!=''">
+                <bind name="actMessagetmp" value="'%' + actMessage + '%'" />
+                     AND ACT_MESSAGE = like #{actMessagetmp}
+            </if>
+            <if test="actResult==0 || (actResult != null and actResult!='')">
+                     AND ACT_RESULT = #{actResult}
+            </if>
+            <if test="actId != null and actId!=''">
+                     AND ACT_ID = #{actId}
+            </if>
+    </select>
+    <select id="selectWithMap" resultMap="BaseResultMap" parameterType="map">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM JF_PAY_AUDIT where 1=1
+            <if test="actor != null and actor!=''">
+                <bind name="actortmp" value="'%' + actor + '%'" />
+                     AND ACTOR like #{actortmp}
+            </if>
+            <if test="userid != null and userid!=''">
+                <bind name="useridtmp" value="'%' + userid + '%'" />
+                     AND USERID like #{useridtmp}
+            </if>
+            <if test="personuuid != null and personuuid!=''">
+                <bind name="personuuidtmp" value="'%' + personuuid + '%'" />
+                    AND PERSONUUID like #{personuuidtmp}
+            </if>
+            <if test="accounttype==0||(accounttype != null and accounttype!='')">
+                     AND ACCOUNTTYPE = #{accounttype}
+            </if>
+            <if test="actAction != null and actAction!=''">
+                     AND ACT_ACTION = #{actAction}
+            </if>
+            <if test="actObj != null and actObj!=''">
+                     AND ACT_OBJ = #{actObj}
+            </if>
+            <if test="actMessage != null and actMessage!=''">
+                <bind name="actMessagetmp" value="'%' + actMessage + '%'" />
+                     AND ACT_MESSAGE = like #{actMessagetmp}
+            </if>
+            <if test="actResult==0 || (actResult != null and actResult!='')">
+                     AND ACT_RESULT = #{actResult}
+            </if>
+            <if test="actId != null and actId!=''">
+                     AND ACT_ID = #{actId}
+            </if>
+    </select>
+	<select id="runSQL" resultMap="BaseResultMap" parameterType="com.common.vo.JfSql">${sql}
+	</select>
+	<insert id="save" useGeneratedKeys="true"
+		parameterType="com.common.vo.PayAudit">
+		insert into jf_pay_audit (
+		  PKEY,PVALUE,MEMO,CREATE_TIME,CREATE_PERSON_ID,UPDATE_TIME,UPDATE_PERSON_ID
+		) values ( 
+			#{actor,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+			#{personuuid,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR},
+			#{orguuid,jdbcType=VARCHAR}, #{enrolledOrg,jdbcType=VARCHAR},
+			#{enrolledOrguuid,jdbcType=VARCHAR}, #{accounttype,jdbcType=INTEGER},
+			#{actResult,jdbcType=INTEGER}, #{actAction,jdbcType=VARCHAR},
+			#{actCode,jdbcType=VARCHAR}, #{actObj,jdbcType=VARCHAR},
+			#{logoutTime,jdbcType=DECIMAL}, #{loginid,jdbcType=DECIMAL},
+			#{loginMode,jdbcType=VARCHAR}, #{actTime,jdbcType=DECIMAL},
+			#{actItemCode,jdbcType=VARCHAR}, #{actItemNum,jdbcType=INTEGER},
+			#{isclob,jdbcType=INTEGER}, #{actMessage,jdbcType=VARCHAR},
+			#{actIp,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR},
+			#{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR},
+			#{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=INTEGER},
+			#{ext5,jdbcType=INTEGER} 
+		)
+	</insert>
+	<update id="update" parameterType="com.common.vo.PayAudit">
+		UPDATE jf_pay_audit
+		<set>
+			<if test="actor!= null ">ACTOR = #{actor,jdbcType=VARCHAR},</if>
+			<if test="userid!= null ">USERID = #{userid,jdbcType=VARCHAR},</if>
+			<if test="personuuid!= null ">PERSONUUID = #{personuuid,jdbcType=VARCHAR},</if>
+			<if test="orgname!= null ">ORGNAME = #{orgname,jdbcType=VARCHAR},</if>
+			<if test="orguuid!= null ">ORGUUID = #{orguuid,jdbcType=VARCHAR},</if>
+			<if test="enrolledOrg!= null ">ENROLLED_ORG = #{enrolledOrg,jdbcType=VARCHAR},</if>
+			<if test="enrolledOrguuid!= null ">ENROLLED_ORGUUID = #{enrolledOrguuid,jdbcType=VARCHAR},
+			</if>
+			<if test="accounttype!= null ">ACCOUNTTYPE = #{accounttype,jdbcType=INTEGER},</if>
+			<if test="actResult!= null ">ACT_RESULT = #{actResult,jdbcType=INTEGER},</if>
+			<if test="actAction!= null ">ACT_ACTION = #{actAction,jdbcType=VARCHAR},</if>
+			<if test="actCode!= null ">ACT_CODE = #{actCode,jdbcType=VARCHAR},</if>
+			<if test="actObj!= null ">ACT_OBJ = #{actObj,jdbcType=VARCHAR},</if>
+			<if test="logoutTime!= null ">LOGOUT_TIME = #{logoutTime,jdbcType=DECIMAL},</if>
+			<if test="loginid!= null ">LOGINID = #{loginid,jdbcType=DECIMAL},</if>
+			<if test="loginMode!= null ">LOGIN_MODE = #{loginMode,jdbcType=VARCHAR},</if>
+			<if test="actTime!= null ">ACT_TIME = #{actTime,jdbcType=DECIMAL},</if>
+			<if test="actItemCode!= null ">ACT_ITEM_CODE = #{actItemCode,jdbcType=VARCHAR},</if>
+			<if test="actItemNum!= null ">ACT_ITEM_NUM = #{actItemNum,jdbcType=INTEGER},</if>
+			<if test="isclob!= null ">ISCLOB = #{isclob,jdbcType=INTEGER},</if>
+			<if test="actMessage!= null ">ACT_MESSAGE = #{actMessage,jdbcType=VARCHAR},</if>
+			<if test="actIp!= null ">ACT_IP = #{actIp,jdbcType=VARCHAR},</if>
+			<if test="signature!= null ">SIGNATURE = #{signature,jdbcType=VARCHAR},</if>
+			<if test="ext1!= null ">EXT1 = #{ext1,jdbcType=VARCHAR},</if>
+			<if test="ext2!= null ">EXT2 = #{ext2,jdbcType=VARCHAR},</if>
+			<if test="ext3!= null ">EXT3 = #{ext3,jdbcType=VARCHAR},</if>
+			<if test="ext4!= null ">EXT4 = #{ext4,jdbcType=INTEGER},</if>
+			<if test="ext5!= null ">EXT5 = #{ext5,jdbcType=INTEGER}</if>
+		</set>
+		where ACT_ID = #{actId,jdbcType=INTEGER}
+	</update>
+	<delete id="batchDelete">
+		DELETE FROM jf_pay_audit WHERE ACT_ID IN
+		<foreach collection="array" index="index" item="item" open="("
+			separator="," close=")">#{item}</foreach>
+	</delete>
+</mapper>

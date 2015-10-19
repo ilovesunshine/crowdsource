@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csi.jf.pay.common.model.PayAudit">
+  <resultMap id="BaseResultMap" type="com.chinasofti.vo.PayAudit">
+    <id column="ACT_ID" property="actId" jdbcType="NUMERIC"/>
+    <result column="ACTOR" property="actor" jdbcType="VARCHAR"/>
+    <result column="USERID" property="userid" jdbcType="VARCHAR"/>
+    <result column="PERSONUUID" property="personuuid" jdbcType="VARCHAR"/>
+    <result column="ORGNAME" property="orgname" jdbcType="VARCHAR"/>
+    <result column="ORGUUID" property="orguuid" jdbcType="VARCHAR"/>
+    <result column="ENROLLED_ORG" property="enrolledOrg" jdbcType="VARCHAR"/>
+    <result column="ENROLLED_ORGUUID" property="enrolledOrguuid" jdbcType="VARCHAR"/>
+    <result column="ACCOUNTTYPE" property="accounttype" jdbcType="NUMERIC"/>
+    <result column="ACT_RESULT" property="actResult" jdbcType="NUMERIC"/>
+    <result column="ACT_ACTION" property="actAction" jdbcType="VARCHAR"/>
+    <result column="ACT_CODE" property="actCode" jdbcType="VARCHAR"/>
+    <result column="ACT_OBJ" property="actObj" jdbcType="VARCHAR"/>
+    <result column="LOGOUT_TIME" property="logoutTime" jdbcType="DECIMAL"/>
+    <result column="LOGINID" property="loginid" jdbcType="DECIMAL"/>
+    <result column="LOGIN_MODE" property="loginMode" jdbcType="VARCHAR"/>
+    <result column="ACT_TIME" property="actTime" jdbcType="DECIMAL"/>
+    <result column="ACT_ITEM_CODE" property="actItemCode" jdbcType="VARCHAR"/>
+    <result column="ACT_ITEM_NUM" property="actItemNum" jdbcType="NUMERIC"/>
+    <result column="ISCLOB" property="isclob" jdbcType="NUMERIC"/>
+    <result column="ACT_MESSAGE" property="actMessage" jdbcType="VARCHAR"/>
+    <result column="ACT_IP" property="actIp" jdbcType="VARCHAR"/>
+    <result column="SIGNATURE" property="signature" jdbcType="VARCHAR"/>
+    <result column="EXT1" property="ext1" jdbcType="VARCHAR"/>
+    <result column="EXT2" property="ext2" jdbcType="VARCHAR"/>
+    <result column="EXT3" property="ext3" jdbcType="VARCHAR"/>
+    <result column="EXT4" property="ext4" jdbcType="NUMERIC"/>
+    <result column="EXT5" property="ext5" jdbcType="NUMERIC"/>
+  </resultMap>
+  <select id="selectAuditLog" resultMap="BaseResultMap" parameterType="com.chinasofti.vo.PayAudit"/>
+  <sql id="Base_Column_List"/>
+</mapper>

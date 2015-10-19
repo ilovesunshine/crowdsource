@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.common.vo.UserAuthentic">
+	<resultMap id="BaseResultMap" type="com.common.vo.UserAuthentic">
+		<id column="JFID" property="jfid" jdbcType="BIGINT" />
+		<result column="BUID" property="buid" jdbcType="BIGINT" />
+		<result column="TYPE" property="type" jdbcType="INTEGER" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+		<result column="FULLNAME" property="fullname" jdbcType="VARCHAR" />
+		<result column="IDENCODE" property="idencode" jdbcType="VARCHAR" />
+		<result column="IDENEXP" property="idenexp" jdbcType="DATE" />
+		<result column="IDENPER" property="idenper" jdbcType="INTEGER" />
+		<result column="IDENIMGPOS" property="idenimgpos" jdbcType="VARCHAR" />
+		<result column="IDENIMGREV" property="idenimgrev" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="CHECKTIME" property="checktime" jdbcType="TIMESTAMP" />
+		<result column="CHECKRESULT" property="checkresult" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">JFID,BUID,TYPE,STATUS,FULLNAME,IDENCODE,IDENEXP,IDENPER,IDENIMGPOS,IDENIMGREV,CREATETIME,CHECKTIME,CHECKRESULT
+	</sql>
+	<select id="selectWithModel" resultMap="BaseResultMap"
+		parameterType="com.common.vo.UserAuthentic">
+		select
+		<include refid="Base_Column_List" />
+		from jf_v_pay_user_authentic where 1=1
+		<if test="jfid!= null and jfid != ''"> and JFID = #{jfid,jdbcType=BIGINT}</if>
+		<if test="buid!= null and buid != ''"> and BUID = #{buid,jdbcType=BIGINT}</if>
+		<if test="type!= null and type != ''"> and TYPE = #{type,jdbcType=INTEGER}</if>
+		<if test="status!= null and status != ''"> and STATUS = #{status,jdbcType=INTEGER}</if>
+		<if test="fullname!= null and fullname != ''"> and FULLNAME = #{fullname,jdbcType=VARCHAR}</if>
+		<if test="idencode!= null and idencode != ''"> and IDENCODE = #{idencode,jdbcType=VARCHAR}</if>
+		<if test="idenexp!= null and idenexp != ''"> and IDENEXP = #{idenexp,jdbcType=DATE}</if>
+		<if test="idenper!= null and idenper != ''"> and IDENPER = #{idenper,jdbcType=INTEGER}</if>
+		<if test="idenimgpos!= null and idenimgpos != ''"> and IDENIMGPOS = #{idenimgpos,jdbcType=VARCHAR}</if>
+		<if test="idenimgrev!= null and idenimgrev != ''"> and IDENIMGREV = #{idenimgrev,jdbcType=VARCHAR}</if>
+		<if test="createtime!= null and createtime != ''"> and CREATETIME = #{createtime,jdbcType=TIMESTAMP}</if>
+		<if test="checktime!= null and checktime != ''"> and CHECKTIME = #{checktime,jdbcType=TIMESTAMP}</if>
+		<if test="checkresult!= null and checkresult != ''"> and CHECKRESULT = #{checkresult,jdbcType=VARCHAR}</if>
+	</select>
+	<select id="selectWithMap" resultMap="BaseResultMap"
+		parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		from jf_v_pay_user_authentic where 1=1
+		<if test="jfid!= null and jfid != ''"> and JFID = #{jfid,jdbcType=BIGINT}</if>
+		<if test="buid!= null and buid != ''"> and BUID = #{buid,jdbcType=BIGINT}</if>
+		<if test="type!= null and type != ''"> and TYPE = #{type,jdbcType=INTEGER}</if>
+		<if test="status!= null and status != ''"> and STATUS = #{status,jdbcType=INTEGER}</if>
+		<if test="fullname!= null and fullname != ''"> and FULLNAME = #{fullname,jdbcType=VARCHAR}</if>
+		<if test="idencode!= null and idencode != ''"> and IDENCODE = #{idencode,jdbcType=VARCHAR}</if>
+		<if test="idenexp!= null and idenexp != ''"> and IDENEXP = #{idenexp,jdbcType=DATE}</if>
+		<if test="idenper!= null and idenper != ''"> and IDENPER = #{idenper,jdbcType=INTEGER}</if>
+		<if test="idenimgpos!= null and idenimgpos != ''"> and IDENIMGPOS = #{idenimgpos,jdbcType=VARCHAR}</if>
+		<if test="idenimgrev!= null and idenimgrev != ''"> and IDENIMGREV = #{idenimgrev,jdbcType=VARCHAR}</if>
+		<if test="createtime!= null and createtime != ''"> and CREATETIME = #{createtime,jdbcType=TIMESTAMP}</if>
+		<if test="checktime!= null and checktime != ''"> and CHECKTIME = #{checktime,jdbcType=TIMESTAMP}</if>
+		<if test="checkresult!= null and checkresult != ''"> and CHECKRESULT = #{checkresult,jdbcType=VARCHAR}</if>
+	</select>
+	<select id="runSQL" resultMap="BaseResultMap" parameterType="com.common.vo.JfSql">${sql}
+	</select>
+	<insert id="save" useGeneratedKeys="true"
+		parameterType="com.common.vo.UserAuthentic">insert into jf_v_pay_user_authentic (
+		PKEY,PVALUE,MEMO,CREATE_TIME,CREATE_PERSON_ID,UPDATE_TIME,UPDATE_PERSON_ID
+		) values ( #{buid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER}, #{fullname,jdbcType=VARCHAR},
+		#{idencode,jdbcType=VARCHAR}, #{idenexp,jdbcType=DATE},
+		#{idenper,jdbcType=INTEGER}, #{idenimgpos,jdbcType=VARCHAR},
+		#{idenimgrev,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+		#{checktime,jdbcType=TIMESTAMP}, #{checkresult,jdbcType=VARCHAR} )
+	</insert>
+	<update id="update" parameterType="com.common.vo.UserAuthentic">
+		UPDATE jf_v_pay_user_authentic
+		<set>
+			<if test="buid!= null ">BUID = #{buid,jdbcType=BIGINT},</if>
+			<if test="type!= null ">TYPE = #{type,jdbcType=INTEGER},</if>
+			<if test="status!= null ">STATUS = #{status,jdbcType=INTEGER},</if>
+			<if test="fullname!= null ">FULLNAME = #{fullname,jdbcType=VARCHAR},</if>
+			<if test="idencode!= null ">IDENCODE = #{idencode,jdbcType=VARCHAR},</if>
+			<if test="idenexp!= null ">IDENEXP = #{idenexp,jdbcType=DATE},</if>
+			<if test="idenper!= null ">IDENPER = #{idenper,jdbcType=INTEGER},</if>
+			<if test="idenimgpos!= null ">IDENIMGPOS = #{idenimgpos,jdbcType=VARCHAR},</if>
+			<if test="idenimgrev!= null ">IDENIMGREV = #{idenimgrev,jdbcType=VARCHAR},</if>
+			<if test="createtime!= null ">CREATETIME = #{createtime,jdbcType=TIMESTAMP},</if>
+			<if test="checktime!= null ">CHECKTIME = #{checktime,jdbcType=TIMESTAMP},</if>
+			<if test="checkresult!= null ">CHECKRESULT = #{checkresult,jdbcType=VARCHAR}</if>
+		</set>
+		where JFID = #{jfid,jdbcType=BIGINT}
+	</update>
+	<delete id="batchDelete">
+		DELETE FROM jf_v_pay_user_authentic WHERE JFID IN
+		<foreach collection="array" index="index" item="item" open="("
+			separator="," close=")">#{item}</foreach>
+	</delete>
+</mapper>

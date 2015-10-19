@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/jdbc
+    http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc     
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/jee 
+    http://www.springframework.org/schema/jee/spring-jee.xsd" 
+	default-autowire="byName" >
+	<!-- J2EE环境下的JNDI数据源 -->
+    <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/JFPay"/> 
+ 	<context:annotation-config />
+   	<!--配置jdbc.properties文件的位置信息，路径还是区分大小写 -->
+   
+   	<!-- 读取jdbc.properties文件，配置数据源 -->  
+   	
+	<!-- sqlSessionFactory --><!-- MyBatis在spring中Bean的配置，都是固定的 -->  
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">   
+		<property name="configLocation" value="classpath:spring/mybatis-config.xml" />   
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+		<list>
+			<value>classpath:com/pay/common/vo/*Mapper.xml</value>
+			<value>classpath:com/pay/sys/vo/*Mapper.xml</value>
+			<value>classpath:com/common/vo/*Mapper.xml</value>
+		</list>
+		</property>  
+	</bean>  
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">   
+		<constructor-arg index="0" ref="sqlSessionFactory" />  
+	</bean>
+	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+	        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">  
+	      <tx:attributes>  
+	            <tx:method name="get*" read-only="true" propagation="SUPPORTS" /> 
+				<tx:method name="load*" read-only="true" propagation="SUPPORTS" /> 
+				<tx:method name="find*" read-only="true" propagation="SUPPORTS" /> 
+				<tx:method name="add*"  rollback-for="Exception" propagation="REQUIRED"  isolation="DEFAULT"/> 
+				<tx:method name="save*" rollback-for="Exception" propagation="REQUIRED"  isolation="DEFAULT"/> 
+	       </tx:attributes>  
+	</tx:advice>
+	<aop:config>  
+	    <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.csi.jf.pay.*.service.impl.*Impl.*(..))" />  
+	</aop:config> 
+	     <!-- scan for mappers and let them be autowired -->
+	<!--basePackage指定要扫描的包，在此包之下的映射器都会被搜索到。可指定多个包，包与包之间用逗号或分号分隔-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <property name="basePackage" value="com.chinasofti.jfalm.job.vo;com.vo" />
+   	</bean>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+	    <!-- 定义默认的异常处理页面，当该异常类型的注册时使用 -->  
+	    <property name="defaultErrorView" value="error"></property>  
+	    <!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
+	    <property name="exceptionAttribute" value="ex"></property>  
+	    <!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 -->  
+	    <property name="exceptionMappings">  
+	        <props>  
+	            <prop key="cn.basttg.core.exception.BusinessException">error-business</prop>  
+	            <prop key="cn.basttg.core.exception.ParameterException">error-parameter</prop>  
+	            <!-- 这里还可以继续扩展对不同异常类型的处理 -->  
+	        </props>  
+	    </property>  
+	</bean> 
+    <aop:config>
+        <aop:aspect id="point" ref="logInterceptor">
+          	<aop:pointcut expression="execution(public * com.service.*Impl.*(..))" id="myMethod"/> 
+             	<aop:after-returning method="afterReturning" pointcut-ref="myMethod" />
+            <aop:after method="afterFinily" pointcut-ref="myMethod" /> 
+        </aop:aspect>
+    </aop:config>
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Component Id="4089e42849dfbd810149dfdf6e3a0340" Name="common">
+  <Version>1.0.0</Version>
+  <code>common</code>
+  <Mark>公共模块</Mark>
+  <Description></Description>
+  <NavigatorEntrance></NavigatorEntrance>
+  <ComplexAttribute Name="packageAndFolder">
+    <Package/>
+    <Folder/>
+  </ComplexAttribute>
+  <ComplexAttribute Name="objectRelation"/>
+  <ComplexAttribute Name="requirement"/>
+  <ComplexAttribute Name="humanProcess"/>
+  <ComplexAttribute Name="interface"/>
+  <ComplexAttribute Name="coverRequire"/>
+  <ComplexAttribute Name="designData"/>
+</Component>

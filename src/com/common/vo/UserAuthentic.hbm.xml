@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<model-mapping>
+  <class name="com.csi.jf.pay.common.model.UserAuthentic" table="jf_v_pay_user_authentic">
+    <comment>用户实名认证</comment>
+    <sql id="list" type="default"><![CDATA[SELECT JFID,BUID,TYPE,STATUS,FULLNAME,IDENCODE,IDENEXP,IDENPER,IDENIMGPOS,IDENIMGREV,CREATETIME,CHECKTIME,CHECKRESULT FROM jf_v_pay_user_authentic WHERE 1=1]]></sql>
+    <id name="jfid" type="java.lang.Long">
+      <column name="JFID" not-null="true">
+        <comment>用户ID</comment>
+      </column>
+      <generator class="native"/>
+    </id>
+    <property name="buid" type="java.lang.Long">
+      <column name="BUID">
+        <comment>团队id</comment>
+      </column>
+    </property>
+    <property name="type" type="java.lang.Integer">
+      <column name="TYPE">
+        <comment>账号类别</comment>
+      </column>
+    </property>
+    <property name="status" type="java.lang.Integer">
+      <column name="STATUS">
+        <comment>状态</comment>
+      </column>
+    </property>
+    <property name="fullname" type="java.lang.String">
+      <column name="FULLNAME" length="255">
+        <comment>真实姓名</comment>
+      </column>
+    </property>
+    <property name="idencode" type="java.lang.String">
+      <column name="IDENCODE" length="255">
+        <comment>身份证号</comment>
+      </column>
+    </property>
+    <property name="idenexp" type="java.sql.Date">
+      <column name="IDENEXP">
+        <comment>有效期</comment>
+      </column>
+    </property>
+    <property name="idenper" type="java.lang.Integer">
+      <column name="IDENPER">
+        <comment>永久有效</comment>
+      </column>
+    </property>
+    <property name="idenimgpos" type="java.lang.String">
+      <column name="IDENIMGPOS" length="255">
+        <comment>身份证正面照片</comment>
+      </column>
+    </property>
+    <property name="idenimgrev" type="java.lang.String">
+      <column name="IDENIMGREV" length="255">
+        <comment>身份证反面照片</comment>
+      </column>
+    </property>
+    <property name="createtime" type="java.sql.Timestamp">
+      <column name="CREATETIME">
+        <comment>创建时间</comment>
+      </column>
+    </property>
+    <property name="checktime" type="java.sql.Timestamp">
+      <column name="CHECKTIME">
+        <comment>认证时间</comment>
+      </column>
+    </property>
+    <property name="checkresult" type="java.lang.String">
+      <column name="CHECKRESULT" length="255">
+        <comment>审核结果</comment>
+      </column>
+    </property>
+  </class>
+</model-mapping>

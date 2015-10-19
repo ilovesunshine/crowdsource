@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xsi:schemaLocation="  
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd  
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">  
+  <!-- 注解探测器 -->
+    
+   <!--  annotation默认的方法映射适配器 -->
+ <bean
+	class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<property name="webBindingInitializer">
+		<bean class="com.common.utils.JFDateBinding" />
+	</property>
+	<property name="messageConverters">
+		<list>
+			<bean
+				class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="writeAcceptCharset" value="false" />
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>*/*;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<bean
+				class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+		</list>
+	</property>
+</bean>
+    <!-- @Controller, @Service, @Configuration, etc. -->  
+    <context:component-scan base-package="com" />  
+  
+    <!-- Enables the Spring MVC @Controller programming model -->  
+    <mvc:annotation-driven />  
+  
+    <!-- Enable placeholderConfig -->  
+  
+    <!-- FileUpload Support -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />  
+  
+    <!-- Support static resource  --> 
+    <mvc:resources mapping="/js/**" location="/js/" />  
+    <mvc:resources mapping="/css/**" location="/css/" />  
+    <mvc:resources mapping="/images/**" location="/images/" />  
+    <mvc:default-servlet-handler/>  
+  <mvc:interceptors>  
+        <mvc:interceptor>  
+            <!-- 需拦截的地址 -->  
+            <mvc:mapping path="/*/*"/>  
+            <!-- 需排除拦截的地址 -->  
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/styles/**"/>
+            <mvc:exclude-mapping path="/login/tologin"/>
+            <mvc:exclude-mapping path="/login/login"/>
+            <mvc:exclude-mapping path="/login/logout"/>
+            <bean class="com.common.interceptor.LoginInterceptor"/>  
+        </mvc:interceptor>  
+    </mvc:interceptors> 
+    <!-- 配置视图解析 -->
+ 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+	    <property name="contentType" value="text/html;charset=UTF-8"></property>  
+    </bean>
+   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	    <property name="exceptionMappings">
+	        <props>
+	            <prop key="com.exceptions.AuthorizationException">/login</prop>
+	        </props>
+	    </property>
+  </bean>
+    <!-- Support json ResponseBody -->  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+        <property name="messageConverters">  
+            <list>  
+                <ref bean="mappingJacksonHttpMessageConverter" />  
+            </list>  
+        </property>  
+    </bean>  
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />  
+	<import resource="spring/spring-jobs.xml"/>
+	<import resource="spring/spring-datasource.xml"/>
+	<bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  		 <property name="locations">
+            <list>	
+                <value>classpath:properties/mail.properties</value>
+                <value>classpath:properties/framework.properties</value>
+                <value>classpath:properties/jf-settings.conf</value>
+            </list>
+        </property>
+   </bean>  
+	<!--  从缓存中查询用户信息接口 end  -->
+	<bean name="orderCodeBean" id="orderCodeBean" class="com.csi.jf.uuid.OrderCodeBean" init-method="init">
+	    <property name="dataSource" ref="dataSource" /> <!-- 存放序列号的数据库的数据源 -->
+	    <property name="tableName" value="jf_pay_seq_generator" /> <!-- 存放序列号的表名 -->
+	    <property name="name" value="jfpay_code" /> <!-- 序列号的名字，每个名字对应一组唯一的序列号，收到数据库表name字段的长度限制，别太长了 -->
+	    <property name="begin" value="10000000000" /> <!-- 初始化数据的起始值（当数据库中对应name有值的时候就不起作用了） -->
+	    <property name="fetch" value="10000" /> <!-- 每次取的条数，注意：每次启动都会一次性消耗掉fetch * concurrency条序号，因此如果序号比较短这里不能设置的太大 -->
+	    <property name="concurrency" value="4" /> <!-- 并发数量，我本机实测4是比较快的 -->
+	    <property name="expand" value="false" /> <!-- 序列号超长的处理: true=序列号超长的话用prefix+seq直接拼，false=拼出来的序列号超长的时候抛异常 -->
+	</bean>
+
+	<bean id="jfSettings" name="jfSettings" class="com.common.constants.JfSettings">           
+		<property name="evn" value="${jfpay.env}"/>
+		<property name="accountType" value="${jfpay.account.type}"/>
+		<property name="accountSuffix" value="${jfpay.account.suffix}"/>
+
+		<property name="feeRateEnt" value="${jfpay.feerate.ent}"/>
+		<property name="feeRatePer" value="${jfpay.feerate.per}"/>
+		<property name="billRefund" value="${jfpay.bill.refund}"/>
+
+		<property name="translogsEbcStartyear" value="${jfpay.translogs.ebc.startyear}"/>
+		<property name="translogsFtpPath" value="${jfpay.translogs.ftp.path}"/>
+		<property name="translogsOssPath" value="${jfpay.translogs.oss.path}"/>
+
+		<property name="prefixSubMobile" value="${jfpay.submobile.prefix}"/>
+		<property name="secretEncrypt" value="${jfpay.secret.encrypt}"/>
+		<property name="secretBonus" value="${jfpay.secret.bonus}"/>
+		<property name="secretOrder" value="${jfpay.secret.order}"/>     
+		
+		<property name="ftpServerUrl" value="${jfpay.ftp.server.url}"/>
+		<property name="ftpServerUsername" value="${jfpay.ftp.server.username}"/>
+		<property name="ftpServerPwd" value="${jfpay.ftp.server.pwd}"/>
+		<property name="ftpServerSeperator" value="${jfpay.ftp.server.seperator}"/>
+		<property name="ftpServerPathEbc" value="${jfpay.ftp.server.path.ebc}"/>
+		<property name="ftpFileEbcSuffix" value="${jfpay.ftp.filename.ebc.suffix}"/>
+		<property name="ftpFileLocalSuffix" value="${jfpay.ftp.filename.local.suffix}"/>
+		<property name="ftpFileZipSuffix" value="${jfpay.ftp.filename.zip.suffix}"/>
+
+		<property name="ossAccessKeyId" value="${jfpay.oss.accessKeyId}"/>
+		<property name="ossAccessKeySecret" value="${jfpay.oss.accessKeySecret}"/>
+		<property name="ossBucketName" value="${jfpay.oss.bucketName}"/>
+		<property name="ossLocalPathBD" value="${jfpay.oss.localPath.BD}"/>
+		<property name="ossLocalPathThridParty" value="${jfpay.oss.localPath.thirdparty}"/>
+		<property name="ossServerPathBD" value="${jfpay.oss.serverPath.BD}"/>
+		<property name="ossServerPathThirdParty" value="${jfpay.oss.serverPath.thirdparty}"/>
+	</bean>
+	<bean id="beanFactory" class="com.chinasofti.ro.bizframework.core.libs.BeanFactory"/>
+	<bean id="cacheMg" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:spring/ehcache.xml</value>
+		</property>
+		<property name="cacheManagerName">
+			<value>simpleCache</value>
+		</property>
+		<property name="acceptExisting">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="cacheMg">
+		</property>
+		<property name="cacheName">
+			<value>METHOD_CACHE</value>
+		</property>
+	</bean>
+	<bean id="ehCacheImpl" class="com.chinasofti.ro.bizframework.core.cache.impl.EhCacheImpl">
+		<property name="ehcache" ref="ehCache" >
+		</property>
+	</bean> 
+	
+	<bean id="bizCache" class="com.chinasofti.ro.bizframework.core.cache.BizCache" autowire="byName" >
+		<property name="cache" ref="ehCacheImpl">
+		</property>
+	</bean>
+</beans>  

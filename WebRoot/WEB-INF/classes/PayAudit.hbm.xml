@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model-mapping>
+  <class name="com.csi.jf.pay.common.model.PayAudit" table="jf_pay_audit">
+    <comment>行为审核日志表</comment>
+    <sql id="list" type="default"><![CDATA[SELECT ACT_ID,ACTOR,USERID,PERSONUUID,ORGNAME,ORGUUID,ENROLLED_ORG,ENROLLED_ORGUUID,ACCOUNTTYPE,ACT_RESULT,ACT_ACTION,ACT_CODE,ACT_OBJ,LOGOUT_TIME,LOGINID,LOGIN_MODE,ACT_TIME,ACT_ITEM_CODE,ACT_ITEM_NUM,ISCLOB,ACT_MESSAGE,ACT_IP,SIGNATURE,EXT1,EXT2,EXT3,EXT4,EXT5 FROM jf_pay_audit WHERE 1=1 
+    #if($actor) and ACTOR like :actor  #end  
+    #if($userid) and USERID like :userid  #end  
+    #if($personuuid) and PERSONUUID like :personuuid  #end  
+    #if($accounttype) and ACCOUNTTYPE = :accounttype  #end  
+    #if($actAction) and ACT_ACTION = :actAction  #end  
+    #if($actObj) and ACT_OBJ = :actObj  #end  
+    #if($actMessage) and ACT_MESSAGE like :actMessage  #end  
+    #if($actResult) and ACT_RESULT = :actResult  #end  
+    ORDER BY ACT_TIME DESC]]></sql>
+    <id name="actId" type="java.lang.Integer">
+      <column name="ACT_ID" not-null="true">
+        <comment>actId</comment>
+      </column>
+      <generator class="native"/>
+    </id>
+    <property name="actor" type="java.lang.String">
+      <column name="ACTOR" length="128">
+        <comment>actor</comment>
+      </column>
+    </property>
+    <property name="userid" type="java.lang.String">
+      <column name="USERID" length="128">
+        <comment>userid</comment>
+      </column>
+    </property>
+    <property name="personuuid" type="java.lang.String">
+      <column name="PERSONUUID" length="64">
+        <comment>personuuid</comment>
+      </column>
+    </property>
+    <property name="orgname" type="java.lang.String">
+      <column name="ORGNAME" length="254">
+        <comment>orgname</comment>
+      </column>
+    </property>
+    <property name="orguuid" type="java.lang.String">
+      <column name="ORGUUID" length="64">
+        <comment>orguuid</comment>
+      </column>
+    </property>
+    <property name="enrolledOrg" type="java.lang.String">
+      <column name="ENROLLED_ORG" length="254">
+        <comment>enrolledOrg</comment>
+      </column>
+    </property>
+    <property name="enrolledOrguuid" type="java.lang.String">
+      <column name="ENROLLED_ORGUUID" length="64">
+        <comment>enrolledOrguuid</comment>
+      </column>
+    </property>
+    <property name="accounttype" type="java.lang.Integer">
+      <column name="ACCOUNTTYPE">
+        <comment>accounttype</comment>
+      </column>
+    </property>
+    <property name="actResult" type="java.lang.Integer">
+      <column name="ACT_RESULT">
+        <comment>actResult</comment>
+      </column>
+    </property>
+    <property name="actAction" type="java.lang.String">
+      <column name="ACT_ACTION" length="254">
+        <comment>actAction</comment>
+      </column>
+    </property>
+    <property name="actCode" type="java.lang.String">
+      <column name="ACT_CODE" length="64">
+        <comment>actCode</comment>
+      </column>
+    </property>
+    <property name="actObj" type="java.lang.String">
+      <column name="ACT_OBJ" length="254">
+        <comment>actObj</comment>
+      </column>
+    </property>
+    <property name="logoutTime" type="java.math.BigDecimal">
+      <column name="LOGOUT_TIME" precision="20">
+        <comment>logoutTime</comment>
+      </column>
+    </property>
+    <property name="loginid" type="java.math.BigDecimal">
+      <column name="LOGINID" precision="20">
+        <comment>loginid</comment>
+      </column>
+    </property>
+    <property name="loginMode" type="java.lang.String">
+      <column name="LOGIN_MODE" length="64">
+        <comment>loginMode</comment>
+      </column>
+    </property>
+    <property name="actTime" type="java.math.BigDecimal">
+      <column name="ACT_TIME" precision="20">
+        <comment>actTime</comment>
+      </column>
+    </property>
+    <property name="actItemCode" type="java.lang.String">
+      <column name="ACT_ITEM_CODE" length="64">
+        <comment>actItemCode</comment>
+      </column>
+    </property>
+    <property name="actItemNum" type="java.lang.Integer">
+      <column name="ACT_ITEM_NUM">
+        <comment>actItemNum</comment>
+      </column>
+    </property>
+    <property name="isclob" type="java.lang.Integer">
+      <column name="ISCLOB">
+        <comment>isclob</comment>
+      </column>
+    </property>
+    <property name="actMessage" type="java.lang.String">
+      <column name="ACT_MESSAGE" length="1024">
+        <comment>actMessage</comment>
+      </column>
+    </property>
+    <property name="actIp" type="java.lang.String">
+      <column name="ACT_IP" length="64">
+        <comment>actIp</comment>
+      </column>
+    </property>
+    <property name="signature" type="java.lang.String">
+      <column name="SIGNATURE" length="512">
+        <comment>signature</comment>
+      </column>
+    </property>
+    <property name="ext1" type="java.lang.String">
+      <column name="EXT1" length="254">
+        <comment>ext1</comment>
+      </column>
+    </property>
+    <property name="ext2" type="java.lang.String">
+      <column name="EXT2" length="128">
+        <comment>ext2</comment>
+      </column>
+    </property>
+    <property name="ext3" type="java.lang.String">
+      <column name="EXT3" length="128">
+        <comment>ext3</comment>
+      </column>
+    </property>
+    <property name="ext4" type="java.lang.Integer">
+      <column name="EXT4">
+        <comment>ext4</comment>
+      </column>
+    </property>
+    <property name="ext5" type="java.lang.Integer">
+      <column name="EXT5">
+        <comment>ext5</comment>
+      </column>
+    </property>
+  </class>
+</model-mapping>

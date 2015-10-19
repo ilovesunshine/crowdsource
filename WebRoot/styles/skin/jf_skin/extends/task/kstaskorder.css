@@ -1,0 +1,249 @@
+#tasko-left {
+	width:653px;
+	float:left;
+	margin-bottom:30px;
+}
+#tasko-mid {
+	float:left;
+	width:3px;
+	height:510px;
+	background:url(images/taskomid.png);
+}
+#tasko-right {
+	width:308px;
+	position:relative;
+	float:right;
+	margin-bottom:30px;
+}
+.taskobox {
+	margin-bottom:30px;
+}
+.tasko_titlebar {
+    background: url("images/tasko_titlebg.png");
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    width: 118px;
+}
+.taskocon {
+	padding:18px 33px;
+	clear:both;
+	color:#797979;
+}
+.taskosedate {
+	height:30px;
+	line-height:30px;
+	background:#fffcf1;
+	border:1px solid #ffe79e;
+	padding-left:12px;
+	margin-bottom:10px;
+}
+.taskosedate span {
+	float:left;
+}
+.taskoinfoshow {
+	margin-left:12px;
+}
+.taskoinfoshow td {
+	padding:5px 0;
+}
+.taskoperson {
+	float:left;
+	width:50%;
+}
+.taskostatus {
+	height:60px;
+	line-height:60px;
+}
+#taskstatus_check.taskostatus_check {
+	font-size:18px;
+	color:#00bb96;
+	font-weight:bold;
+	float:none;
+}
+.kbtn {
+	display:none;
+	margin-right:5px;
+}
+.taskobtn_default {
+	display:none;
+	margin-right:5px;
+	border:1px solid #ddd;
+	border-radius:4px;
+	 background: -moz-linear-gradient(top,  #ffffff, #f4f4f4);/* FF3.6+ */
+    background: -webkit-linear-gradient(top,  top,  #ffffff, #f4f4f4); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top,  #ffffff, #f4f4f4); /* IE10+ */
+}
+.taskobtn_default:hover {
+	border:1px solid #2fcea6;
+	color:#00b894;
+}
+.taskobtnbot {
+	margin:10px 25px 0 0;
+	border:1px solid #e5e5e5;
+	background:#fff;
+	box-shadow:3px 3px 5px #f4f4f4;
+}
+.taskobtnbot_title {
+	height:30px;
+	line-height:30px;
+	background:#f6f6f6;
+	padding-left:1em;
+}
+.taskobtnbot_con {
+	padding:12px 1em;
+}
+#edit_taskAppraise {
+	display:inline-block;
+	height:auto;
+	vertical-align:top;
+}
+#divAssessInfo {
+	padding:5px 0 0 60px;
+}
+#saveAppraiseBtn {
+	display:inline-block;
+}
+#taskName,
+#orderNewBtn {
+	display:none;
+}
+#edit_taskAppraise[disabled]{
+	cursor: default;
+	background-color: #fff;
+	border: none;
+	box-shadow: none;
+	transition: none;
+	resize: none;
+	padding-top:0;
+	font-size:12px;
+}
+#taskAppraiseInfoYGB {
+	margin-top:20px;
+}
+.csiui-file-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+}
+.csiui-file-input {
+    color: #555555;
+    float: left;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 2px 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.csiui-file-button.ui-widget-header {
+	background:#f4f4f4;
+   	background: -moz-linear-gradient(top,  #ffffff, #f4f4f4);/* FF3.6+ */
+    background: -webkit-linear-gradient(top,  top,  #ffffff, #f4f4f4); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top,  #ffffff, #f4f4f4); /* IE10+ */
+    margin-left:5px;
+	border:1px solid #ddd;
+	border-radius:4px;
+    color: #333;
+    font-weight: normal;
+    height: 18px;
+    line-height: 18px;
+}
+.task-attach-tip {
+	padding:12px 0;
+}
+#attachmentShow a {
+	color:#10b2f3;
+	text-decoration:underline;
+}
+#attachmentShow img {
+	width:11px;
+}
+.taskohistory ,
+.taskofile,
+.taskoAppraiseNull {
+	margin-top:40px;
+}
+.taskoupdateView {
+	color:#10b2f3;
+	position:absolute;
+	background:none;
+	border:0;
+	left:-125px;
+	top:25px;
+	padding-left:15px;
+	background:url(images/tasko_icon_edit.png) no-repeat left;
+}
+.taskosbtnbox{
+	<c:if test="${OPERFLAG!=1}">
+	display:none;
+	</c:if>
+}
+
+input.taskInfo,.taskInfo{display:none;}	
+.taskinfo-photoDiv{		
+	width: 46px;
+	height: 46px;
+	display: inline-block;
+	float: left;
+	border: 1px solid #CFCFCF;
+	margin-right: 10px;
+}
+.taskinfo-photoDiv img{		
+	cursor: pointer;
+}
+#cancleExceBtn{
+	display:inline-block;
+}
+#cancleAppraiseBtn{
+	display:inline-block;
+}
+.droplist,.droptree {
+	cursor: default;
+	width:198px;
+	background: #fff url(images/downarrow.jpg) no-repeat right;
+	overflow: hidden;
+   display: inline-block;
+   height: 20px;
+   padding: 2px 6px;
+   line-height: 20px;
+   /*color: #555555;*/
+   vertical-align: middle;
+	background-color: #ffffff;
+    border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+          
+    width:194px;
+}
+.dropdownlist .ddl-listbox {
+	font-size: 12px;
+	border: solid 1px #ccc;
+	color: #000;
+	overflow: hiden;
+	overflow-y: auto;
+	background-color: white;
+	table-layout: fixed;
+	width:184px;
+	height:auto;
+}
+#edit_taskAppraise_info {
+	display:inline-block;
+	padding:0 5px;
+	max-width:210px;
+	max-height:80px;
+	overflow-y:auto;
+	vertical-align:top;
+	line-height:20px;
+	word-wrap:break-word;
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.common.vo.PayConfig">
+	<resultMap id="BaseResultMap" type="com.common.vo.PayConfig">
+		<id column="PKEY" property="pkey" jdbcType="VARCHAR" />
+		<result column="PVALUE" property="pvalue" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_PERSON_ID" property="createPersonId" jdbcType="BIGINT" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_PERSON_ID" property="updatePersonId" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PKEY,PVALUE,MEMO,CREATE_TIME,CREATE_PERSON_ID,UPDATE_TIME,UPDATE_PERSON_ID
+	</sql>
+	<select id="selectWithModel" resultMap="BaseResultMap" parameterType="com.common.vo.PayConfig">
+		select
+		<include refid="Base_Column_List" />
+		from jf_pay_config where 1=1
+			<if test="pkey != null and pkey != ''">
+				and PKEY = #{pkey}
+			</if>
+			<if test="pvalue != null and pvalue != ''">
+				and PVALUE = #{pvalue}
+			</if>
+			<if test="createPersonId != null and createPersonId != ''">
+				and CREATE_PERSON_ID = #{createPersonId}
+			</if>
+	</select>
+    <select id="selectWithMap" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from jf_pay_config where 1=1
+            <if test="pkey != null and pkey != ''">
+                and PKEY = #{pkey}
+            </if>
+            <if test="pvalue != null and pvalue != ''">
+                and PVALUE = #{pvalue}
+            </if>
+            <if test="createPersonId != null and createPersonId != ''">
+                and CREATE_PERSON_ID = #{createPersonId}
+            </if>
+    </select>	
+	<delete id="batchDelete" parameterType="java.lang.String">
+        delete from JF_PAY_CONFIG where PKEY in
+        <foreach collection="array" item="item" open="("
+            separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+	<select id="runSQL" resultMap="BaseResultMap" parameterType="com.common.vo.JfSql">
+        ${sql}
+    </select> 
+	<insert id="save" parameterType="com.common.vo.PayConfig" useGeneratedKeys="true">  
+    <![CDATA[ 
+        insert into 
+        jf_pay_config ( 
+        	PKEY,PVALUE,MEMO,CREATE_TIME,CREATE_PERSON_ID,UPDATE_TIME,UPDATE_PERSON_ID
+        ) values ( 
+       		#{pkey,jdbcType=VARCHAR},
+        	#{pvalue,jdbcType=VARCHAR},
+        	#{memo,jdbcType=VARCHAR},
+        	#{createTime,jdbcType=TIMESTAMP},
+        	#{createPersonId ,jdbcType=BIGINT},
+        	#{updateTime ,jdbcType=TIMESTAMP},
+        	#{updatePersonId ,jdbcType=BIGINT}
+        ) 
+    ]]>
+	</insert>
+	<update id="update" parameterType="com.common.vo.PayConfig">
+		update jf_pay_config
+		<set>
+			<if test="pkey != null">
+				PKEY = #{pkey,jdbcType=BIGINT},
+			</if>
+			<if test="pvalue != null">
+				PVALUE = #{pvalue,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				MEMO = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createPersonId != null">
+				CREATE_PERSON_ID = #{createPersonId,jdbcType=BIGINT},
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatePersonId != null">
+				UPDATE_PERSON_ID = #{updatePersonId,jdbcType=BIGINT}
+			</if>
+		</set>
+		where PKEY = #{pkey,jdbcType=BIGINT}
+	</update>
+</mapper>  

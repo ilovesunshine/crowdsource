@@ -1,0 +1,9 @@
+package ${pkg}.impl;
+
+import org.springframework.stereotype.Repository;
+import ${pkg}.I$!{modelName}DAO;
+
+@Repository("$!{modelNameLower}DAOImpl")
+public class $!{modelName}DAOImpl extends DAOImpl implements I$!{modelName}DAO {
+
+}

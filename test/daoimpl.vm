@@ -1,0 +1,128 @@
+package com.csi.jf.pay.sys.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.csi.jf.pay.common.dao.IQuery;
+import com.csi.jf.pay.common.dao.Model;
+import com.csi.jf.pay.common.dao.exception.DBException;
+import com.csi.jf.pay.common.dao.impl.IQueryImpl;
+import com.csi.jf.pay.common.view.Page;
+import com.csi.jf.pay.common.vo.$!{modelName};
+import com.csi.jf.pay.sys.dao.I$!{modelName}DAO;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+
+@Repository("$!{modelNameLower}DAOImpl")
+public class $!{modelName}DAOImpl implements I$!{modelName}DAO {
+	@Resource
+	private SqlSessionTemplate sqlSession;
+	
+	@Override
+	public IQuery createQuery(Model model)throws DBException{
+	    IQuery iQuery = new IQueryImpl();
+	    try {
+	        List list = sqlSession.selectList("$!{selectId}", model);
+	        iQuery = new IQueryImpl(list);
+	    } catch (Exception e) {
+            throw new DBException(e.getMessage(), e);
+        }
+	    return iQuery;
+	}
+	
+    @Override
+    public IQuery createNamedQuery(Class class1, String sql, Object model,Page page) {
+        IQuery iQuery = new IQueryImpl();
+        try {
+            PageHelper.startPage(page.getStartPage(), page.getPageSize());
+            PageHelper.orderBy(page.getOrderBy());
+            List resultList = sqlSession.selectList("$!{selectId}", model);
+            page.setPageList(new PageInfo(resultList));
+            iQuery = new IQueryImpl(page);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return iQuery;
+    }
+    @Override
+    public String dbMeta() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public void save(Object model) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void update(Object model) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public IQuery createQuery(Model model) throws DBException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public IQuery createQueryOne(Model model) throws DBException {
+        try {
+            return sqlSession.selectOne("$!{selectId}", model);
+        } catch (Exception e) {
+            throw new DBException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public IQuery createNamedQuery(Class class1, String string,
+            Map<String, Object> params) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public IQuery createNamedQuery(Class class1, String string,
+            Map<String, Object> params, Page page) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public IQuery createNamedQuery(Class class1, String sql, Object model) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public void batchSave(List list) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void batchUpdate(List list) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public int[] batchDelete(String ids) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public void execute(String sql, List<Object> sqlParam) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void executeNamedSql(String sql, Map<String, Object> params) {
+        // TODO Auto-generated method stub
+        
+    }
+   
+
+}
