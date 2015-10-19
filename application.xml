@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Component Id="20151015001" Name="crowdsource">
+  <Version>1.0</Version>
+  <Vendor>crowdsource</Vendor>
+  <Description></Description>
+  <Mark>crowdsource</Mark>
+  <FirstPageForFrameWork/>
+  <HomePage/>
+  <ProjectName/>
+  <AppArchitect/>
+  <ComplexAttribute Name="designFile"/>
+</Component>

@@ -1,0 +1,9 @@
+build/
+target/
+dist/
+logs/
+resources/context_path.properties
+WebApp/WEB-INF/classes/
+WebRoot/WEB-INF/classes/
+/bin/
+velocity.log

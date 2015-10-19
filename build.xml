@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="crowdsource" basedir="."> 
+  <!-- define property -->  
+  <property file="build.properties"/>  
+  <property name="web" value="WebApp"/>  
+  <property name="dist" value="dist"/>  
+  <property name="lib" value="lib"/>  
+  <property name="build.classes" value="${web}/WEB-INF/classes"/>  
+  <property name="compress.dir" value="${dist}/compress"/>  
+  <property name="pagecompressor" value="${lib}/ant/pagecompressor-0.1.jar"/>  
+  <!-- define path -->  
+  <path id="lib.path"> 
+    <fileset dir="lib"> 
+      <include name="**/*.jar"/> 
+    </fileset>  
+    <fileset dir="${web}/WEB-INF/lib"> 
+      <include name="**/*.jar"/> 
+    </fileset> 
+  </path>  
+  <path id="compress.path"> 
+    <pathelement location="${compress.dir}"/> 
+  </path>  
+  <!-- define task -->  
+  <target name="init"> 
+    <!-- Taskdefs -->  
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="lib.path"/>  
+    <!-- Ensure that Ant 1.6.2+ is being used -->  
+    <available classname="org.apache.tools.ant.DynamicAttribute" property="ant-1.6.2"/>  
+    <fail unless="ant-1.6.2" message="Requires Ant 1.6.2 for faster unit testing"/> 
+  </target>  
+  <!-- set war and zip name, time formate -->  
+  <target name="prepare" depends="init"> 
+    <tstamp> 
+      <format property="build.date" pattern="yyyyMMdd"/> 
+    </tstamp>  
+    <tstamp> 
+      <format property="build.year" pattern="yyyy"/> 
+    </tstamp>  
+    <property name="webapp.war" value="${webapp.name}-${webapp.version}-${build.date}.war"/>  
+    <property name="webapp.zip" value="${webapp.name}web-${webapp.version}-${build.date}.zip"/>  
+    <mkdir dir="${build.classes}"/>  
+    <mkdir dir="${dist}"/> 
+  </target>  
+  <!-- compile all src path code and xml,properites file -->  
+  <target name="all-compile" depends="clean,prepare"> 
+    <javac srcdir="${all.src.path}" destdir="${build.classes}" deprecation="${compile.deprecation}" optimize="${compile.optimize}" encoding="${compile.encoding}" debug="true" debuglevel="vars" classpathref="lib.path" fork="true" memoryinitialsize="64m" memorymaximumsize="128m" includeantruntime="false"></javac>  
+    <foreach target="compile-xml-properties" param="src.path" list="${all.src.path}" delimiter=";"/> 
+  </target>  
+  <!-- compile xml,properites file -->  
+  <target name="compile-xml-properties"> 
+    <copy todir="${build.classes}"> 
+      <fileset dir="${src.path}"> 
+        <include name="**/*.properties"/>  
+        <include name="**/*.xml"/>  
+        <include name="**/*.zip"/>  
+        <exclude name="*_zh_CN.properties"/>  
+        <exclude name="**/test-*.xml"/> 
+      </fileset> 
+    </copy>  
+    <native2ascii src="${src.path}" dest="${build.classes}" encoding="${compile.encoding}"> 
+      <include name="*_zh_CN.properties"/> 
+    </native2ascii> 
+  </target>  
+  <!-- package project jar file -->  
+  <target name="package-jar" depends="all-compile"> 
+    <buildnumber file="jar.buildnumber"/>  
+    <jar destfile="dist/${webapp.name}.jar"> 
+      <manifest> 
+        <attribute name="Class-Path" value="${webapp.name}.jar"/>  
+        <attribute name="Implementation-Title" value="${webapp.name}"/>  
+        <attribute name="Implementation-Version" value="${webapp.version}"/> 
+      </manifest>  
+      <fileset dir="${build.classes}"/>  
+      <fileset dir="." file="${jar.buildnumber}"/> 
+    </jar> 
+  </target>  
+  <!-- generate css,js compress file -->  
+  <target name="gzip"> 
+    <delete dir="${compress.dir}"/>  
+    <mkdir dir="${compress.dir}"/>  
+    <copy todir="${compress.dir}" overwrite="true"> 
+      <fileset dir="WebApp"> 
+        <include name="js/**/*.js"/>  
+        <include name="js/**/*.css"/>  
+        <include name="styles/**/*.css"/>  
+        <include name="styles/**/*.js"/> 
+      </fileset> 
+    </copy>  
+    <exec executable="java"> 
+      <arg line="-jar"/>  
+      <arg path="${pagecompressor}"/>  
+      <arg line="--charset utf-8"/>  
+      <arg line="--gzip"/>  
+      <arg line="--css"/>  
+      <arg line="--js"/>  
+      <arg pathref="compress.path"/> 
+    </exec>  
+    <copy todir="WebApp" overwrite="true"> 
+      <fileset dir="${compress.dir}"> 
+        <include name="**/*.gzjs"/>  
+        <include name="**/*.gzcss"/> 
+      </fileset> 
+    </copy>  
+    <delete dir="${compress.dir}"/> 
+  </target>  
+  <!-- package project war file -->  
+  <target name="package-war" depends="gzip,package-jar" description="Package WAR"> 
+    <buildnumber file="war.buildnumber"/>  
+    <!-- webapp.war -->  
+    <war destfile="${dist}/${webapp.war}" duplicate="fail" webxml="WebApp/WEB-INF/web.xml" compress="true"> 
+      <fileset dir="WebApp"> 
+        <exclude name="WEB-INF/classes/**/test-*"/>  
+        <exclude name="WEB-INF/classes/template/**"/>  
+        <exclude name="**/web.xml"/>  
+        <exclude name="**/*.EXAMPLE"/>  
+        <exclude name="**/*.README"/>  
+        <exclude name="pages/welcome.jsp"/> 
+      </fileset>  
+      <fileset dir="." file="${war.buildnumber}"/>  
+      <fileset dir="." file="*.txt"/> 
+    </war> 
+  </target>  
+  <!-- Remove generated files for clean build -->  
+  <target name="clean" description="Removes build artifacts"> 
+    <echo level="info">Cleaning build and distribution directories</echo>  
+    <delete dir="${build.classes}"/>  
+    <delete dir="${dist}"/>  
+    <delete file="${web}/WEB-INF/tld/${webapp.name}.tld"/> 
+  </target> 
+</project>
